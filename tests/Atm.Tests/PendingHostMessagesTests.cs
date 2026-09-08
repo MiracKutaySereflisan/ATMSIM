@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // PendingHostMessagesTests.cs
 //
 // What this file does: it pins down when a message that was not acknowledged is tried

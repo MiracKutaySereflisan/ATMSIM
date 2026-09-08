@@ -1,10 +1,11 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // FactAttribute.cs
 //
 // What this file does: it defines the [Fact] marker that says "this method is a test".
 //
 // Why the namespace is Xunit: this is deliberate, and it is the whole point of the
 // TestKit folder. The build machine cannot reach the NuGet package feed, so the real
-// xUnit library cannot be downloaded (see KARARLAR.md KARAR-006). Rather than invent
+// xUnit library cannot be downloaded (see the decision record KARAR-006). Rather than invent
 // our own test syntax, we implement the small part of xUnit's surface that we actually
 // use, under xUnit's own name. The consequence: every test file in this project is
 // written exactly as it would be against the real library.

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // CoverageMatrix.cs
 //
 // What this file does: it works out which cells of the "transaction x fault x moment"
@@ -9,11 +10,11 @@
 // arithmetically honest and practically useless - a number that cannot go up is a number
 // nobody reads.
 //
-// But narrowing the denominator is also the easiest way to cheat, and rule 9 (docs/proje-kurallari.md)
+// But narrowing the denominator is also the easiest way to cheat, and rule 9
 // says to assume somebody will ask. So the narrowing is not done cell by cell and it is not
 // done by judgement at report time. It is done by two small tables below - which moments a
 // TRANSACTION has, and which moments a FAULT can strike at - and a cell exists when both
-// tables allow it. Both tables are printed in docs/scenarios.md section 5.1, and making
+// tables allow it. Both tables are printed in the scenario format section 5.1, and making
 // coverage look better means editing one of them, in a commit, where it can be seen.
 //
 // What this file does NOT do: judge whether a covered cell is covered WELL. One scenario in
@@ -54,7 +55,7 @@ public sealed class CoverageMatrix
     /// <remarks>
     /// A partial dispense can only happen while cash is being handed over. An empty cassette
     /// can only bite before authorisation, because that is where this machine checks whether
-    /// it can build the amount at all (rule 4.6 (docs/proje-kurallari.md)) - a machine that found out
+    /// it can build the amount at all (rule 4.6) - a machine that found out
     /// later would be a machine with a different bug. A duplicate request only exists where
     /// a message is sent, so it has no dispense moment.
     /// </remarks>
@@ -128,7 +129,7 @@ public sealed class CoverageMatrix
             $"Kapsama: {Covered}/{Total} hücre koşuldu " +
             $"({(Total == 0 ? 0 : 100.0 * Covered / Total):F0}%). " +
             $"{Impossible} kombinasyon anlamsız olduğu için hiç sayılmadı " +
-            "(docs/scenarios.md §5.1).",
+            "(the scenario format §5.1).",
         };
 
         if (Empty.Count == 0)

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // MessageType.cs
 //
 // What this file does: it lists the names that may appear in an envelope's Type field,
@@ -14,7 +15,7 @@
 //
 // What is implemented here is what the host actually answers today: echo, PIN
 // verification, balance enquiry and - since Phase 2b - withdrawal authorisation.
-// Dispense advice, reversal and the deposit messages are written in docs/protocol.md
+// Dispense advice, reversal and the deposit messages are written in the protocol spec
 // and arrive with the phases that perform them. Writing them now would be writing code
 // for behaviour that does not exist yet.
 
@@ -47,7 +48,7 @@ public static class MessageType
 
 /// <summary>
 /// What the machine says happened to the notes the customer put in.
-/// See docs/protocol.md section 4.6.
+/// See the protocol spec section 4.6.
 /// </summary>
 /// <remarks>
 /// The mirror of DispenseOutcome, and the same distinction runs through it: money that
@@ -69,7 +70,7 @@ public static class DepositOutcome
     public const string Jammed = "JAMMED";
 }
 
-/// <summary>Why a withdrawal is being taken back. See docs/protocol.md section 4.5.</summary>
+/// <summary>Why a withdrawal is being taken back. See the protocol spec section 4.5.</summary>
 /// <remarks>
 /// The reason never changes what the host does - a reversal releases the promise whatever
 /// its reason. It is carried because the end-of-day report has to be able to say WHY the
@@ -95,13 +96,13 @@ public static class ReversalReason
 }
 
 /// <summary>
-/// What the machine says happened to the cash. See docs/protocol.md section 4.4.
+/// What the machine says happened to the cash. See the protocol spec section 4.4.
 /// </summary>
 /// <remarks>
 /// These four words are the difference between money that left the bank and money that
 /// only left a drawer. "Dispensed" is not "taken": cash can reach the mouth of the
 /// machine and be pulled back in when nobody picks it up, and that cash is in neither
-/// the customer's pocket nor the cassette (rule 4.4 (docs/proje-kurallari.md)).
+/// the customer's pocket nor the cassette (rule 4.4).
 /// </remarks>
 public static class DispenseOutcome
 {
@@ -120,7 +121,7 @@ public static class DispenseOutcome
 
 /// <summary>
 /// The note values this protocol allows inside a denomination breakdown, in kurus.
-/// Fixed by docs/model.md section 2.
+/// Fixed by the domain model section 2.
 /// </summary>
 /// <remarks>
 /// This list lives in the shared project rather than on either side, because both sides
@@ -138,7 +139,7 @@ public static class Denominations
     public static bool IsValid(long denomination) => Valid.Contains(denomination);
 }
 
-/// <summary>Response codes. See docs/protocol.md section 5.</summary>
+/// <summary>Response codes. See the protocol spec section 5.</summary>
 public static class ResponseCode
 {
     /// <summary>Approved.</summary>
@@ -167,7 +168,7 @@ public static class ResponseCode
 
     /// <summary>
     /// Reconcile error: the day's totals do not match, or business is still open on it.
-    /// The day does not close. See docs/protocol.md section 4.7.
+    /// The day does not close. See the protocol spec section 4.7.
     /// </summary>
     public const string ReconcileError = "95";
 
@@ -211,7 +212,7 @@ public sealed record BalanceResponseBody(string Rc, long Available, long Ledger)
 /// One line of a denomination breakdown: so many notes of one value.
 /// </summary>
 /// <remarks>
-/// The wire names are the short "d" and "n" that docs/protocol.md section 4.3 fixes, and
+/// The wire names are the short "d" and "n" that the protocol spec section 4.3 fixes, and
 /// the C# names are the readable ones. The attributes are the only place those two
 /// vocabularies meet; nothing else in the code has to know that "d" means anything.
 /// </remarks>
@@ -227,7 +228,7 @@ public sealed record DenominationLine(
 /// <summary>
 /// Withdrawal authorisation request. Carries the breakdown the machine intends to hand
 /// over, because the note check happens BEFORE the account is touched - instruction
-/// section 4.6 and docs/protocol.md section 4.3.
+/// section 4.6 and the protocol spec section 4.3.
 /// </summary>
 /// <remarks>
 /// The breakdown is not a courtesy. The host re-adds it and refuses the request when the
@@ -264,7 +265,7 @@ public sealed record DispenseAdviceBody(
 
 /// <summary>
 /// The host's acknowledgement, carrying the account as it now stands. Until this arrives
-/// the machine keeps re-sending the advice (docs/protocol.md section 4.5).
+/// the machine keeps re-sending the advice (the protocol spec section 4.5).
 /// </summary>
 public sealed record DispenseAdviceResponseBody(string Rc, long Available, long Ledger);
 
@@ -274,10 +275,10 @@ public sealed record DispenseAdviceResponseBody(string Rc, long Available, long 
 /// </summary>
 /// <remarks>
 /// A reversal is not a claim that the withdrawal did not happen. It is sent precisely
-/// BECAUSE it may have happened and the machine cannot tell (rule 4.1 (docs/proje-kurallari.md)).
+/// BECAUSE it may have happened and the machine cannot tell (rule 4.1).
 /// It carries the same trace number as the authorisation it undoes, which is how the host
 /// knows which promise to release, and it is re-sent until acknowledged, because a
-/// reversal that is lost leaves the customer short (rule 4.2 (docs/proje-kurallari.md)).
+/// reversal that is lost leaves the customer short (rule 4.2).
 /// </remarks>
 public sealed record ReversalRequestBody(string AuthId, long Amount, string Reason);
 
@@ -348,7 +349,7 @@ public sealed record DayTotals(long Withdrawals, long Deposits, int Count)
 }
 
 /// <summary>
-/// Close today, open tomorrow - and here is what I counted. See docs/protocol.md 4.7.
+/// Close today, open tomorrow - and here is what I counted. See the protocol spec 4.7.
 /// </summary>
 /// <param name="NewBizDate">The date the terminal will start using once this is agreed.</param>
 /// <param name="Totals">The TERMINAL's own totals for the day being closed.</param>

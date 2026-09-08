@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // TerminalWithdrawalTests.cs
 //
 // What these tests are for: the screen side of a withdrawal - what the customer sees, in

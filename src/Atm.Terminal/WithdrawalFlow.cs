@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // WithdrawalFlow.cs
 //
 // What this file does: it performs one withdrawal from the terminal's side, from "the
@@ -79,7 +80,7 @@ public sealed record WithdrawalHandle(
 /// </summary>
 /// <remarks>
 /// The two halves exist because presenting cash and having it taken are separated in TIME,
-/// not only in name (rule 4.4 (docs/proje-kurallari.md)). A single call that asks a function "did the
+/// not only in name (rule 4.4). A single call that asks a function "did the
 /// customer take it?" can only be driven by something that already knows the answer - a
 /// test or a scenario file. A screen cannot answer it, because the answer arrives later,
 /// as an event, and the machine has to keep drawing and listening in the meantime.
@@ -92,7 +93,7 @@ public sealed record WithdrawalStart(WithdrawalResult? Finished, WithdrawalHandl
 /// <summary>One withdrawal, from the terminal's side.</summary>
 public sealed class WithdrawalFlow
 {
-    /// <summary>How long the terminal waits for an authorisation (docs/protocol.md section 6).</summary>
+    /// <summary>How long the terminal waits for an authorisation (the protocol spec section 6).</summary>
     public static readonly TimeSpan AuthTimeout = TimeSpan.FromSeconds(30);
 
     /// <summary>How long it waits for an advice to be acknowledged.</summary>
@@ -116,7 +117,7 @@ public sealed class WithdrawalFlow
     /// <param name="customerTakesTheCash">
     /// The machine watching its own mouth: true when somebody picked the notes up before
     /// the machine gave up on them. This is a separate question from whether the notes
-    /// came out, because they are separate events (rule 4.4 (docs/proje-kurallari.md)).
+    /// came out, because they are separate events (rule 4.4).
     /// </param>
     public WithdrawalFlow(
         Func<Envelope, TimeSpan, Envelope?> ask,
@@ -194,7 +195,7 @@ public sealed class WithdrawalFlow
             new WithdrawalAuthRequestBody(pan, amount,
                 // Without the note check there is nothing to send: a machine that has not
                 // worked out which notes it would use has no breakdown to declare, and
-                // asks for a number instead (rule 4.6 (docs/proje-kurallari.md)).
+                // asks for a number instead (rule 4.6).
                 _hardening.NoteCheckBeforeAuthorisation
                     ? plan.Bundles.Select(b => new DenominationLine(b.Denomination, b.Count)).ToList()
                     : []));
@@ -241,7 +242,7 @@ public sealed class WithdrawalFlow
 
         // A machine that never checked whether it could build the amount arrives here with
         // a plan that was refused. It still tries, and nothing comes out - which is the
-        // whole cost of asking the host first (rule 4.6 (docs/proje-kurallari.md)): the promise is
+        // whole cost of asking the host first (rule 4.6): the promise is
         // already made when the machine finds out.
         var presented = plan.CanDispense ? _dispenser.Present(plan) : 0;
 
@@ -329,7 +330,7 @@ public sealed class WithdrawalFlow
     /// <remarks>
     /// The order matters: queued messages go BEFORE the next customer's, because they
     /// are about money that has already moved and the next customer's money has not.
-    /// This is what docs/protocol.md section 4.5 calls a late reversal.
+    /// This is what the protocol spec section 4.5 calls a late reversal.
     /// </remarks>
     public int SendPending()
     {

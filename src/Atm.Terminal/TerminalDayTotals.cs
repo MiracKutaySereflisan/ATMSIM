@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // TerminalDayTotals.cs
 //
 // What this file does: it adds up one business day out of the terminal's own record, in
@@ -10,7 +11,7 @@
 // in a named place on each side makes the two rules readable side by side; the host's
 // half is HostDayTotals.cs and the two files are meant to be read together.
 //
-// The rule, from docs/protocol.md section 4.7: count money that PHYSICALLY moved. Cash
+// The rule, from the protocol spec section 4.7: count money that PHYSICALLY moved. Cash
 // the customer took, notes that reached a drawer. Not what was authorised, not what was
 // asked for, not what was handed back, not what a reversal released. Intent is not
 // movement, and a day counted by intent would balance against nothing.

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // Program.cs (Atm.Host)
 //
 // What this file does: it starts the bank side. It opens a TCP port, waits for the
@@ -8,7 +9,7 @@
 // which knows nothing about sockets. This file exists to hold a port open and to
 // print enough that a person watching a demo can see what is happening.
 //
-// The account data is the demo data from docs/model.md section 4.1 - three invented
+// The account data is the demo data from the domain model section 4.1 - three invented
 // accounts and three invented card numbers, corresponding to nothing real.
 //
 // Both the record and the accounts go to files rather than to memory (KARAR-013,
@@ -72,7 +73,7 @@ catch (System.Net.Sockets.SocketException ex) when (ex.SocketErrorCode == System
 {
     // A port clash is an operating condition, not a broken invariant, and the two deserve
     // opposite treatment. A violated invariant must fail loudly with everything it knows,
-    // because somebody has to debug it (rule 6b (docs/proje-kurallari.md)). "Somebody else is already on
+    // because somebody has to debug it (rule 6b). "Somebody else is already on
     // this port" needs no debugging - it needs one sentence and a way out. Printing a stack
     // trace here would mean a wall of English exception text in front of an audience for a
     // problem whose whole answer fits on two lines.

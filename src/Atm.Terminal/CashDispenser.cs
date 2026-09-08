@@ -1,10 +1,11 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // CashDispenser.cs
 //
 // What this file does: it is the machine's hands. It takes notes out of the cassettes,
 // puts them where the customer can reach them, and then finds out whether the customer
 // actually took them.
 //
-// Why it is an interface with a fake behind it (rule 6a (docs/proje-kurallari.md)): there is no
+// Why it is an interface with a fake behind it (rule 6a): there is no
 // cash drawer in this project and there never will be. Everything this project measures
 // happens in the moments when the hands do not do what they were asked - fewer notes
 // come out than were planned, nothing comes out at all, or the money comes out and
@@ -52,7 +53,7 @@ public interface ICashDispenser
 /// How much money is sitting in each of the machine's buckets, in kurus.
 /// </summary>
 /// <remarks>
-/// The bucket names are the ones docs/model.md section 1 fixes, and the list is closed:
+/// The bucket names are the ones the domain model section 1 fixes, and the list is closed:
 /// a note that is not in one of these is a note this project cannot account for. The
 /// money-conservation checker of Phase 2f reads exactly these numbers.
 /// </remarks>
@@ -106,7 +107,7 @@ public sealed record CashPosition(
 /// </summary>
 /// <remarks>
 /// This is not a test helper living in production code by accident. Fault injection is
-/// what this project is FOR (rule 3 (docs/proje-kurallari.md)), and Phase 4 drives these same
+/// what this project is FOR (rule 3), and Phase 4 drives these same
 /// settings from scenarios/*.json rather than from C#.
 /// </remarks>
 public sealed record DispenserFault
@@ -221,7 +222,7 @@ public sealed class FakeCashDispenser : ICashDispenser, ICashAcceptor
         // Into its own bucket, NOT back into the cassettes. The machine took these notes
         // in an order it did not record and cannot hand them out again; counting them
         // back into a drawer would show more money in that drawer than it holds, and the
-        // difference would surface at day end as an unexplained surplus (docs/model.md).
+        // difference would surface at day end as an unexplained surplus (the domain model).
         _retracted += pulledBack;
         return pulledBack;
     }

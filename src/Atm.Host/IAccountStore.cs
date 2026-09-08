@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // IAccountStore.cs
 //
 // What this file does: it is the door between the transaction flow and wherever
@@ -39,7 +40,7 @@ public interface IAccountStore
 }
 
 /// <summary>
-/// The accounts of docs/model.md section 4.1, held in memory. Every one of them is
+/// The accounts of the domain model section 4.1, held in memory. Every one of them is
 /// invented and Luhn-valid; none corresponds to a real card, account or person.
 /// </summary>
 public sealed class InMemoryAccountStore : IAccountStore
@@ -50,7 +51,7 @@ public sealed class InMemoryAccountStore : IAccountStore
         _byPan = accounts.ToDictionary(a => a.Pan);
 
     /// <summary>
-    /// The accounts as the world starts: the balances docs/model.md section 4.1 fixes.
+    /// The accounts as the world starts: the balances the domain model section 4.1 fixes.
     /// </summary>
     /// <remarks>
     /// This list is the OPENING position, and it is used twice: to create a machine that

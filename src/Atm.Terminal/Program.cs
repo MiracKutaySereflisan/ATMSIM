@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // Program.cs (Atm.Terminal)
 //
 // What this file does: it starts the machine the customer stands in front of. Three
@@ -70,7 +71,7 @@ var demo = new DemoFaults();
 
 // The line, with the operator's switches in front of it. "hat-kes" answers nothing at all;
 // "cevap-yut" lets the request through, lets the host do the work, and throws the answer
-// away. The second is the one worth showing: it is rule 4.1 (docs/proje-kurallari.md) in the flesh,
+// away. The second is the one worth showing: it is rule 4.1 in the flesh,
 // and the machine cannot tell it apart from the first.
 //
 // A cut line answers immediately rather than after the full timeout. A dead socket answers

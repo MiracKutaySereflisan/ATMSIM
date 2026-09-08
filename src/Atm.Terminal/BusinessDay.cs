@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // BusinessDay.cs
 //
 // What this file does: it holds the business date this machine is currently working in,
@@ -56,7 +57,7 @@ public sealed class BusinessDay
     /// Moves to a new day. Refuses to move backwards or to stand still.
     /// </summary>
     /// <remarks>
-    /// The refusal is loud on purpose (rule 6b (docs/proje-kurallari.md)). Rolling to a day that has
+    /// The refusal is loud on purpose (rule 6b). Rolling to a day that has
     /// already been closed would let the machine write new money into a settled day, and
     /// the difference would surface a day later as a total nobody can explain. A caller
     /// that gets this wrong should find out immediately, not in tomorrow's reconciliation.

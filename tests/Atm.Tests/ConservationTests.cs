@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ConservationTests.cs
 //
 // What these tests are for: the conservation checker is the one piece of this project

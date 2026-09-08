@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-# ekran-provasi.py - Sunum provası: iki süreci başlatır, tarayıcının yerine geçer,
+# Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
+# ekran-provasi.py - Uçtan uca prova: iki süreci başlatır, tarayıcının yerine geçer,
 # ve demo arıza anahtarlarının uçtan uca çalıştığını gösterir.
 #
-# Neden var: kural §7 (docs/proje-kurallari.md) sunum yolunun "provası yapılır" diyor, §16.6 provanın yapılmış
+# Neden var: kural §7 demo yolunun "provası yapılır" diyor, §16.6 provanın yapılmış
 # olmasını bitmiş sayılma koşulları arasına koyuyor. Elle yapılan bir prova, bir sonraki
 # değişiklikten sonra tekrarlanmaz; koşulabilir bir prova tekrarlanır.
 #
@@ -11,8 +12,8 @@
 # Yani tarayıcı dışındaki her şey. Tarayıcının kendi çizimi (animasyonlar, tam ekran)
 # bir insanın bakmasını gerektiriyor ve Faz 5d'de yapılır.
 #
-# Neden Python: bu makinede (bulut konteyneri) hazır duruyor ve tek dosya. Kullanıcının
-# Mac'inde python3 yoksa çalışmaz - o yüzden bu prova bir kapı değil, bir araçtır;
+# Neden Python: tek dosya, ek bağımlılık istemiyor. python3 kurulu olmayan bir makinede
+# çalışmaz - o yüzden bu prova bir kapı değil, bir araçtır;
 # aynı yolun testlerle kapsanan kısmı ScreenServerTests içindedir ve ./scripts/test.sh
 # ile her zaman koşar.
 #

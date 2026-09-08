@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // InMemoryTransport.cs
 //
 // What this file does: one end of an InMemoryLink. It implements ITransport, so the

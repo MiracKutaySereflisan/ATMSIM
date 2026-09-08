@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // WebSocketFraming.cs
 //
 // What this file does: it turns a message into the bytes a WebSocket connection
@@ -5,7 +6,7 @@
 //
 // Why this exists even though we already have MessageFraming: the two links have
 // different rules. The terminal-to-host link is ours, so we chose the simplest thing
-// that works - four bytes of length, then the message (docs/protocol.md section 2.2).
+// that works - four bytes of length, then the message (the protocol spec section 2.2).
 // The browser link is not ours: the browser was written before this project and will
 // only speak the framing written into RFC 6455. So on that side we follow their
 // rules, and the shape below is theirs, not ours.

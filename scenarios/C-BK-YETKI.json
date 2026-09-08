@@ -1,7 +1,7 @@
 {
   "id": "C-BK-YETKI",
   "baslik": "Kupür kısıtı: makine bu tutarı kuramıyor",
-  "aciklama": "kural §4.6 (docs/proje-kurallari.md): kupür kısıtı yetkilendirmeden ÖNCE bakılır. Sonradan fark etmek, iptal edilecek bir borçlanma üretirdi. Makinede yalnızca 20'likler var; 350 lira kurulamaz.",
+  "aciklama": "kural §4.6: kupür kısıtı yetkilendirmeden ÖNCE bakılır. Sonradan fark etmek, iptal edilecek bir borçlanma üretirdi. Makinede yalnızca 20'likler var; 350 lira kurulamaz.",
   "seed": 4008,
   "eksen": {
     "islem": "cekim",

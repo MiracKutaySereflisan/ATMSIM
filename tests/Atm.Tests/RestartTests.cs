@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // RestartTests.cs
 //
 // What these tests are for: switching the HOST off and on again. Not the terminal - that

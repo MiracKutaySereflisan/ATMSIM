@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // CassetteTests.cs
 //
 // These tests are about the drawer itself, not about choosing notes. They pin down the
@@ -86,7 +87,7 @@ public class CassetteTests
     [Fact]
     public void TheStandardLoadMatchesTheOneWrittenInTheModel()
     {
-        // docs/model.md SS2: K1 200 TL x500 recycler, K2 100 TL x1000 recycler,
+        // the domain model SS2: K1 200 TL x500 recycler, K2 100 TL x1000 recycler,
         // K3 50 TL x1000 recycler, K4 20 TL x500 dispense-only.
         var set = CassetteSet.Standard();
 
@@ -133,7 +134,7 @@ public class CassetteTests
         {
             Assert.True(Denominations.IsValid(cassette.Denomination),
                 $"cassette {cassette.Id} holds {cassette.Denomination} kurus, " +
-                "which docs/protocol.md does not allow in a breakdown");
+                "which the protocol spec does not allow in a breakdown");
         }
     }
 }

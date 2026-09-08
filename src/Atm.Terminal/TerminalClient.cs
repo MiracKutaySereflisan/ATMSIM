@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // TerminalClient.cs
 //
 // What this file does: it is the terminal's side of the line. It keeps one connection
@@ -5,7 +6,7 @@
 // the line is still alive, and reconnects when it is not.
 //
 // Why "the matching answer" and not "the next message": answers are matched by the
-// transaction key, never by arrival order (docs/protocol.md section 2.1). A late
+// transaction key, never by arrival order (the protocol spec section 2.1). A late
 // answer to an earlier request can arrive while we are waiting for this one, and
 // taking it would mean showing one customer another transaction's result.
 //

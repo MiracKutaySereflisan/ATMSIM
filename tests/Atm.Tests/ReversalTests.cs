@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ReversalTests.cs
 //
 // What this file does: it checks the message that exists because a timeout is not an
@@ -247,7 +248,7 @@ public class ReversalTests
 
         // The second reversal is the same message arriving twice - which is what a terminal
         // does when an acknowledgement is lost. Closing a transaction must not stop it being
-        // answered, or the terminal would send it for ever (rule 4.2 (docs/proje-kurallari.md)).
+        // answered, or the terminal would send it for ever (rule 4.2).
         Assert.Equal(ResponseCode.Approved, Reverse(host, clock).Rc);
     }
 }

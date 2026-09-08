@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // JournalReplay.cs
 //
 // What this file does: it reads the journal back and works out what was still unfinished

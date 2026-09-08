@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // TerminalClientTests.cs
 //
 // What this file does: it runs the terminal's real rules on lines that die exactly
@@ -211,7 +212,7 @@ public class TerminalClientTests
     /// echoes 1, 2, 3..., so the key is known in advance - which is what lets this
     /// test suite answer an echo without a second thread anywhere in it. Threads
     /// would bring timing, and timing would bring tests that pass four times out of
-    /// five (rule 5 (docs/proje-kurallari.md)).
+    /// five (rule 5).
     /// </summary>
     private static void PutEchoAnswerOnTheLine(Switchboard board, VirtualClock clock, int echoStan) =>
         board.Current!.HostEnd.Send(MessageCodec.Envelope(MessageType.EchoResponse,

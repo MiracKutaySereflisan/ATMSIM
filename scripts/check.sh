@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 # check.sh - Runs one day through the simulator and reports whether the money adds up.
 #
 # This is the money-conservation checker of Phase 2g in its one-command form. It plays a
@@ -11,7 +12,7 @@
 #
 # Usage: ./scripts/check.sh [seed]
 #   The seed decides which faults happen where. The same seed always produces the same day
-#   (rule 5 (docs/proje-kurallari.md): a run that cannot be repeated is not a result).
+#   (rule 5: a run that cannot be repeated is not a result).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1

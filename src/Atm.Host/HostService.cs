@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // HostService.cs
 //
 // What this file does: it takes one message and returns the answer to it. That is the
@@ -5,7 +6,7 @@
 //
 // Why no socket: a flow that reads from a network cannot be tested without a network,
 // and a test that needs a network is a test that fails for reasons that have nothing
-// to do with the money (rule 6a (docs/proje-kurallari.md)). Phase 1e puts a TCP listener in front
+// to do with the money (rule 6a). Phase 1e puts a TCP listener in front
 // of this class; the listener's only job will be to carry bytes in and out. Every
 // decision that matters happens here, where it can be run a thousand times in a
 // millisecond.
@@ -36,7 +37,7 @@
 // The replay table is keyed by transaction key AND message type, not by transaction key
 // alone. The two are not the same thing and the difference is not cosmetic: an
 // authorisation, the dispense advice that follows it and the reversal that may follow
-// that all carry the SAME trace number on purpose (docs/protocol.md section 2.1), so a
+// that all carry the SAME trace number on purpose (the protocol spec section 2.1), so a
 // table keyed by the transaction alone would greet the advice as "you already asked
 // that" and hand back the authorisation's answer. See KARAR-031.
 //
@@ -116,7 +117,7 @@ public sealed class HostService
     }
 
     /// <summary>
-    /// A host wired to the demo data of docs/model.md section 4.1. The record is kept in
+    /// A host wired to the demo data of the domain model section 4.1. The record is kept in
     /// memory unless one is handed in - the running host hands in a file-backed one
     /// (KARAR-013), and every test uses the default.
     /// </summary>
@@ -296,7 +297,7 @@ public sealed class HostService
     /// it. The stale answer is deliberately NOT deleted here - deleting it would change
     /// nothing observable, because the guard in Handle refuses the request before the
     /// replay table is consulted, and code that changes nothing observable is code nobody
-    /// can test (rule 6b (docs/proje-kurallari.md)).
+    /// can test (rule 6b).
     /// </remarks>
     private void MarkReversed(TransactionKey key) => _reversed.Add(key);
 
@@ -376,7 +377,7 @@ public sealed class HostService
         }
 
         // Approved. The hold rises; the ledger does NOT move. It moves when the machine
-        // reports what it actually handed over (docs/protocol.md section 4.4).
+        // reports what it actually handed over (the protocol spec section 4.4).
         var held = account with { HoldAmount = account.HoldAmount + body.Amount };
         _accounts.Save(held);
 
@@ -426,7 +427,7 @@ public sealed class HostService
 
         // The one line that moves money. What reached the customer is what left the
         // machine minus what the machine pulled back in - and nothing else. Cash that
-        // was retracted is in the retract bin (docs/model.md section 1); it is neither
+        // was retracted is in the retract bin (the domain model section 1); it is neither
         // the customer's nor back in the cassette, and it must not move a ledger.
         var handedOver = body.Dispensed - body.Retracted;
 
@@ -454,7 +455,7 @@ public sealed class HostService
 
     /// <summary>
     /// Takes back an authorisation. Always acknowledged, because a reversal that is not
-    /// acknowledged is re-sent for ever (docs/protocol.md section 4.5).
+    /// acknowledged is re-sent for ever (the protocol spec section 4.5).
     /// </summary>
     private Answer Reverse(Envelope request)
     {
@@ -526,7 +527,7 @@ public sealed class HostService
             // un-hand a banknote, so it does not pretend to: it acknowledges - otherwise
             // the terminal re-sends this for ever - and writes the contradiction down
             // loudly. Phase 4 counts these; a silent acknowledgement here would be the
-            // quiet repair rule 6b (docs/proje-kurallari.md) forbids.
+            // quiet repair rule 6b forbids.
             UnexpectedReversalCount++;
 
             _journal.Append(_clock.UtcNow, request.Key, request.Type, ResponseCode.Approved,

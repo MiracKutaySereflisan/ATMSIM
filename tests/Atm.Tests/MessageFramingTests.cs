@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // MessageFramingTests.cs
 //
 // What this file does: it checks that a byte stream really can be cut back into the

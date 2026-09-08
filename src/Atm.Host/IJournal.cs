@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // IJournal.cs
 //
 // What this file does: it is the host's own record of what it was asked and what it
@@ -7,8 +8,8 @@
 // are compared, and every difference has to be explainable. That comparison is only
 // possible if both sides wrote down what they saw AT THE TIME. A record written
 // afterwards from memory is not evidence, and a record that can be edited is not
-// evidence either. So entries are appended and never changed - rule 12 (docs/proje-kurallari.md)
-// and the ledger rule of docs/model.md section 4: a wrong movement is corrected by a
+// evidence either. So entries are appended and never changed - rule 12
+// and the ledger rule of the domain model section 4: a wrong movement is corrected by a
 // second movement, never by rubbing out the first.
 //
 // The journal is not the ledger. The ledger is what the account's money did; the

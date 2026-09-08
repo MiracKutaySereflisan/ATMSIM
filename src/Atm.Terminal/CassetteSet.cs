@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // CassetteSet.cs
 //
 // What this file does: it holds the cassettes a machine is loaded with, and answers
@@ -13,7 +14,7 @@
 //
 // Why the cassettes come back sorted from the largest denomination down: the planner
 // walks them in a fixed order and a plan has to be reproducible from its inputs alone
-// (kural 5 (docs/proje-kurallari.md), determinism). Sorting here means no caller has to remember to.
+// (kural 5, determinism). Sorting here means no caller has to remember to.
 
 namespace Atm.Terminal;
 
@@ -67,7 +68,7 @@ public sealed class CassetteSet
         => _cassettes.FirstOrDefault(c => c.Denomination == denomination);
 
     /// <summary>
-    /// The load this simulator starts from, taken from docs/model.md SS2.
+    /// The load this simulator starts from, taken from the domain model SS2.
     /// ASSUMPTION: the four denominations and their counts are our own choice. They are
     /// not the loading of any real machine and no real bank's configuration was consulted.
     /// </summary>

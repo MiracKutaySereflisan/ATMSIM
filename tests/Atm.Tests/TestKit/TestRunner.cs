@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // TestRunner.cs
 //
 // What this file does: it is the entry point of the test project. It finds every
@@ -8,7 +9,7 @@
 // Why we run tests in a fixed order: test order must not change between two runs of
 // the same code. If it did, a test that only fails when it runs after another test
 // would appear and disappear at random, and this project has a rule against unstable
-// tests (kural §5 (docs/proje-kurallari.md): "kararsız test yoktur"). Sorting by type name, then method name,
+// tests (kural §5: "kararsız test yoktur"). Sorting by type name, then method name,
 // removes the question.
 //
 // Why each test gets a fresh instance of its class: so that one test cannot leave

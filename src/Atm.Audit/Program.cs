@@ -1,10 +1,11 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // Program.cs (Atm.Audit)
 //
 // What this file does: it plays one whole day through the simulator and prints whether
 // the money adds up. This is Phase 2g's deliverable - the central claim of the project
 // turned from a sentence into a command anybody can run.
 //
-// Why a fixed day rather than a random one: rule 5 (docs/proje-kurallari.md) makes determinism
+// Why a fixed day rather than a random one: rule 5 makes determinism
 // absolute. The day below is built from a seed, and the same seed produces the same
 // twelve withdrawals, the same faults at the same moments and the same journals. A run
 // that cannot be repeated cannot be shown to anybody, because the first question asked
@@ -16,7 +17,7 @@
 // balance when nothing goes wrong, they do not balance.
 //
 // What this program is NOT: the scenario runner. That arrives in Phase 4 and reads its
-// failures from scenarios/*.json instead of from the switch below (rule 5 (docs/proje-kurallari.md):
+// failures from scenarios/*.json instead of from the switch below (rule 5:
 // failure scenarios live in data, not in code). This file is its first, small form, and
 // it exists now because the checker it drives had to be provable before the scenarios
 // that will lean on it are written.
@@ -29,7 +30,7 @@ using Atm.Terminal;
 // anything else runs the fixed conservation day of Phase 2g. They share the simulator,
 // the checker and the day harness, and a second executable would have shared all three
 // and differed only in its Main - which is not a layer that solves a problem
-// (rule 6a (docs/proje-kurallari.md)). The two scripts in scripts/ are what a person sees.
+// (rule 6a). The two scripts in scripts/ are what a person sees.
 if (args.Length > 0 && args[0] == "senaryolar")
 {
     return ScenarioReport.Run(args.Length > 1 ? args[1] : "scenarios");
@@ -105,7 +106,7 @@ var report = ConservationChecker.Check(day.Snapshot(AuditMoment.EndOfDay));
 Console.WriteLine(report.ToText());
 
 // The day is now actually closed - the two machines compare their own totals over the
-// wire and only agree if they match (docs/protocol.md section 4.7). This is a different
+// wire and only agree if they match (the protocol spec section 4.7). This is a different
 // question from the one the checker just answered, and both have to be asked. The checker
 // looks at both records at once, which no machine in a real network can do; the cutover is
 // what the two sides can prove to each other with only their own books in hand.

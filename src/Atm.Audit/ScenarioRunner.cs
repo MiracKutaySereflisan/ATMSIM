@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ScenarioRunner.cs
 //
 // What this file does: it takes one scenario, plays it through a simulated day, and says
@@ -7,7 +8,7 @@
 // Nothing here writes back into a scenario, softens a comparison, or reports "close
 // enough". A runner that adjusted its expectations to the result would turn this whole
 // phase into an expensive way of asserting that the code does what the code does
-// (rule 5 (docs/proje-kurallari.md)).
+// (rule 5).
 //
 // The three questions asked at the end, in this order, because they answer different
 // things:
@@ -17,7 +18,7 @@
 //   2. Do the books balance? The conservation checker, run twice - once with the queue
 //      still full (AtRest) and once after it has drained (EndOfDay).
 //   3. WHERE would anybody have noticed? That is the detection point, and it is the
-//      measurement rule 3 (docs/proje-kurallari.md) actually asks for: a difference caught at the
+//      measurement rule 3 actually asks for: a difference caught at the
 //      moment, a difference caught at the end of the day and a difference caught by nobody
 //      are three very different results with the same arithmetic behind them.
 //
@@ -52,7 +53,7 @@ public sealed record ScenarioResult(
     int IhlalSayisi,
     bool? GunKapandi);
 
-/// <summary>Plays scenarios through a simulated day. See docs/scenarios.md.</summary>
+/// <summary>Plays scenarios through a simulated day. See the scenario format.</summary>
 public sealed class ScenarioRunner
 {
     /// <summary>Every step name this runner understands. Anything else is an error.</summary>
@@ -76,7 +77,7 @@ public sealed class ScenarioRunner
     /// <remarks>
     /// The hardening is the ONLY thing that differs between the two runs the report
     /// compares. Same files, same seeds, same steps - because a comparison read under
-    /// unmatched conditions is not a comparison (rule 5 (docs/proje-kurallari.md)).
+    /// unmatched conditions is not a comparison (rule 5).
     /// </remarks>
     public static ScenarioResult Run(Scenario scenario, Hardening? hardening = null)
     {
@@ -87,7 +88,7 @@ public sealed class ScenarioRunner
 
         // A deposit that was begun and not yet confirmed. Held here rather than inside the
         // step, because the whole point of splitting a deposit into two steps is that a
-        // fault can be injected BETWEEN them - which is rule 4.8 (docs/proje-kurallari.md): the line
+        // fault can be injected BETWEEN them - which is rule 4.8: the line
         // can drop between the customer saying yes and the account being touched.
         DepositHandle? inEscrow = null;
 

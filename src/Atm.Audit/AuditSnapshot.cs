@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // AuditSnapshot.cs
 //
 // What this file does: it is everything the conservation checker is allowed to look at,
@@ -11,7 +12,7 @@
 // invariant layer into a source of noise, and noise is how a real finding gets ignored.
 //
 // The second reason is Phase 4. A scenario run has to be reproducible from a seed
-// (rule 5 (docs/proje-kurallari.md)), and a checker that reads live objects can only run while the
+// (rule 5), and a checker that reads live objects can only run while the
 // system is up. A snapshot can be written to a file, kept, and checked again later - by
 // the scenario runner, by the end-of-day script, and by a human who wants to see why.
 //

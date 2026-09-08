@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // CashAcceptorTests.cs
 //
 // What these tests are for: the physical side of a deposit - what happens to the paper,

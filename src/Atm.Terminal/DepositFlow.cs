@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // DepositFlow.cs
 //
 // What this file does: it performs one deposit from the terminal's side, from "the

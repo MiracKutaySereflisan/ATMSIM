@@ -1,17 +1,18 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // PendingHostMessages.cs
 //
 // What this file does: it holds the messages the terminal has sent and not yet had an
 // answer to, and it decides when each one should be tried again.
 //
 // Why this exists at all: a reversal that is lost is worse than no reversal, because the
-// machine believes it has corrected something it has not (rule 4.2 (docs/proje-kurallari.md)). The
+// machine believes it has corrected something it has not (rule 4.2). The
 // same is true of a dispense advice: cash has already left the machine, and if the host
 // never hears about it the money is out of a drawer and in nobody's ledger. Both messages
 // therefore live here until the host says it heard them.
 //
 // The rule this file exists to enforce: A MESSAGE IN THIS QUEUE DOES NOT DIE UNTIL IT IS
 // ACKNOWLEDGED. Not when the line drops, not when the customer walks away, not when the
-// terminal is switched off and on again. The intervals come from docs/protocol.md section
+// terminal is switched off and on again. The intervals come from the protocol spec section
 // 4.5 and they get longer on purpose - a host that is down does not become less down by
 // being asked more often.
 //
@@ -73,7 +74,7 @@ public interface IPendingHostMessages
 public sealed class PendingHostMessages : IPendingHostMessages
 {
     /// <summary>
-    /// How long to wait before each attempt, from docs/protocol.md section 4.5. After the
+    /// How long to wait before each attempt, from the protocol spec section 4.5. After the
     /// list runs out the last interval repeats for ever.
     /// </summary>
     /// <remarks>
@@ -130,7 +131,7 @@ public sealed class PendingHostMessages : IPendingHostMessages
 
         // The envelope carries its own attempt counter so that the host's record can show
         // how many times the terminal had to ask. It is diagnostic only: the host decides
-        // on identity, never on this number (docs/protocol.md section 3).
+        // on identity, never on this number (the protocol spec section 3).
         var message = _waiting[index].Message with { Retry = attempts - 1 };
 
         _waiting[index] = new PendingMessage(message, attempts, now + wait);

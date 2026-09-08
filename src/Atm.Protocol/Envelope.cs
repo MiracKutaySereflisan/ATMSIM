@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // Envelope.cs
 //
 // What this file does: it is the outer part every message carries - version, type,
@@ -16,14 +17,14 @@
 // Reversing that order would mean guessing the type from its shape.
 //
 // The field names here are PascalCase because that is C#'s convention; on the wire
-// they become camelCase ("bizDate"), which is what docs/protocol.md section 2
+// they become camelCase ("bizDate"), which is what the protocol spec section 2
 // specifies. MessageCodec does that translation in one place.
 
 using System.Text.Json;
 
 namespace Atm.Protocol;
 
-/// <summary>The outer part of every message on the wire. See docs/protocol.md section 2.</summary>
+/// <summary>The outer part of every message on the wire. See the protocol spec section 2.</summary>
 public sealed record Envelope
 {
     /// <summary>Protocol version. Always the version this build speaks.</summary>
@@ -59,7 +60,7 @@ public sealed record Envelope
 
 /// <summary>
 /// Terminal + business date + trace number. The host stores this and refuses to perform
-/// the same transaction twice - see docs/protocol.md section 3.
+/// the same transaction twice - see the protocol spec section 3.
 /// </summary>
 /// <remarks>
 /// This is a record struct so that two keys with the same three values are equal without

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // WebSocketFramingTests.cs
 //
 // What these tests check: that a message survives the trip in both directions, and

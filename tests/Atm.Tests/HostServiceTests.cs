@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // HostServiceTests.cs
 //
 // What this file does: it checks the host's behaviour without a network anywhere in

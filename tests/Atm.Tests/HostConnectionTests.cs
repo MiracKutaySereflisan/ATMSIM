@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // HostConnectionTests.cs
 //
 // What this file does: it runs the host's real conversation loop on the in-memory

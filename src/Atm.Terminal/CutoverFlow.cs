@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // CutoverFlow.cs
 //
 // What this file does: it closes a business day. It counts what this machine says moved,
@@ -37,7 +38,7 @@ public sealed record CutoverResult(
         : Math.Abs(Mine.Withdrawals - Theirs.Withdrawals) + Math.Abs(Mine.Deposits - Theirs.Deposits);
 }
 
-/// <summary>Closes one business day against the host. See docs/protocol.md section 4.7.</summary>
+/// <summary>Closes one business day against the host. See the protocol spec section 4.7.</summary>
 public sealed class CutoverFlow
 {
     /// <summary>How long it waits for the host to agree.</summary>

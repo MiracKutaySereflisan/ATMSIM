@@ -1,7 +1,7 @@
 {
   "id": "C-HK-TERSKAYIT",
   "baslik": "Ters kayıt da kayboluyor",
-  "aciklama": "kural §4.2 (docs/proje-kurallari.md): gönderildi diye ulaştı sayılmaz. Hat, ters kayıt gönderilirken de kopuk; onay gelene kadar tekrar denenmeli.",
+  "aciklama": "kural §4.2: gönderildi diye ulaştı sayılmaz. Hat, ters kayıt gönderilirken de kopuk; onay gelene kadar tekrar denenmeli.",
   "seed": 4012,
   "eksen": {
     "islem": "cekim",

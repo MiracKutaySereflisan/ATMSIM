@@ -1,10 +1,11 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // DemoFaults.cs
 //
 // What this file does: it remembers which faults the person running a demonstration has
 // switched on. Nothing else. It does not cause a fault, it does not know what a socket is,
 // and it makes no decision about a transaction.
 //
-// Why it exists: rule 7 (docs/proje-kurallari.md) asks for a demonstration in which the presenter can
+// Why it exists: rule 7 asks for a demonstration in which the presenter can
 // say "now I am cutting the line" and cut it. Without that, a live demo can only show the
 // happy path - and a simulator that only shows the happy path is a demo, not a finding.
 //

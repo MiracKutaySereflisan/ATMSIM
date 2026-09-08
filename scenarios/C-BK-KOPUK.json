@@ -1,7 +1,7 @@
 {
   "id": "C-BK-KOPUK",
   "baslik": "Kuramadığı tutar için söz verip bildirimi kaybetmek",
-  "aciklama": "C-BK-YETKI'nin pahalı hâli. Kupür kontrolü yetkilendirmeden önce yapılmazsa host bir söz verir, makine tek banknot veremez, ve o sözü kapatacak bildirim de yoldadır. kural §4.6 (docs/proje-kurallari.md)'nın bedelinin göründüğü senaryo budur.",
+  "aciklama": "C-BK-YETKI'nin pahalı hâli. Kupür kontrolü yetkilendirmeden önce yapılmazsa host bir söz verir, makine tek banknot veremez, ve o sözü kapatacak bildirim de yoldadır. kural §4.6'nın bedelinin göründüğü senaryo budur.",
   "seed": 4013,
   "eksen": {
     "islem": "cekim",

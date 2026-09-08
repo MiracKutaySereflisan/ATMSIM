@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // TerminalFlow.cs
 //
 // What this file does: it is the part of the terminal that decides. A physical thing
@@ -20,7 +21,7 @@
 // the terminal may simply say so and return the card. Nothing needs undoing, because
 // nothing was done. The moment a withdrawal exists that stops being true - an
 // unanswered withdrawal may already have debited the account, and the right response
-// is a reversal, not a shrug (rule 4.1 (docs/proje-kurallari.md)). This file is written so that
+// is a reversal, not a shrug (rule 4.1). This file is written so that
 // the difference is visible rather than assumed: see SendAndRead, where the null
 // answer is handled, and note that the comment there says "read-only".
 
@@ -400,7 +401,7 @@ public sealed class TerminalFlow
         return Step switch
         {
             // Nobody took the cash. The machine pulls it in, and the money goes into the
-            // retract bin - not back into a cassette (rule 4.4 (docs/proje-kurallari.md)).
+            // retract bin - not back into a cassette (rule 4.4).
             TerminalStep.CashPresented => Settle(takenByCustomer: false),
 
             // The card was returned and left hanging out of the slot. A real machine takes
@@ -606,7 +607,7 @@ public sealed class TerminalFlow
 
                 // No answer. The customer is told the truth - that it could not be
                 // completed - and NOT that it did not happen, because it may have. The
-                // reversal is already queued (rule 4.1 (docs/proje-kurallari.md)).
+                // reversal is already queued (rule 4.1).
                 _ => ReturnCard("İŞLEMİNİZ TAMAMLANAMADI", "Kartınızı alınız."),
             };
         }
@@ -1015,7 +1016,7 @@ public sealed class TerminalFlow
     /// Why this screen exists at all, and why it is not a formality: until a key is
     /// pressed here the banknotes are still the customer's property, sitting in a holding
     /// area inside the machine. Skipping this step - counting the notes and crediting them
-    /// at once - is the classic deposit mistake (rule 4.7 (docs/proje-kurallari.md)). It looks
+    /// at once - is the classic deposit mistake (rule 4.7). It looks
     /// friendlier and it removes the customer's last chance to change their mind about
     /// money that is already out of their hand.
     /// </remarks>

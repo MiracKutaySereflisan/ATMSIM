@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // WebSocketHandshake.cs
 //
 // What this file does: it reads the browser's request to switch a plain HTTP

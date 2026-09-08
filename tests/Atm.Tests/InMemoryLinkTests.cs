@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // InMemoryLinkTests.cs
 //
 // What this file does: it checks the fake line - that a message sent arrives, that

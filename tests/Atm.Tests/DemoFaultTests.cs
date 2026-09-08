@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // DemoFaultTests.cs
 //
 // What these tests are for: the switches a presenter flips on stage - "now I am cutting the
@@ -122,7 +123,7 @@ public class DemoFaultTests
     {
         // They look identical from the machine's side and they are opposites in fact: in
         // one the host never heard, in the other it heard and did the work. A panel with
-        // one button for both could not demonstrate rule 4.1 (docs/proje-kurallari.md) at all.
+        // one button for both could not demonstrate rule 4.1 at all.
         _demo.Apply("cevap-yut");
 
         Assert.False(_demo.LineIsDown);

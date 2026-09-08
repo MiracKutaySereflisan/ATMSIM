@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // InMemoryLink.cs
 //
 // What this file does: it is a line between two ends that exists only in memory -

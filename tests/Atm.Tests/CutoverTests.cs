@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // CutoverTests.cs
 //
 // What these tests are for: the end of a business day - the moment the machine and the

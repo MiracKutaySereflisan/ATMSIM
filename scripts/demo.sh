@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 # demo.sh - Starts the whole machine with one command: host, terminal, browser.
 #
 # What it does, in order: builds, frees the two ports if a previous run left them held,
@@ -209,7 +210,7 @@ echo ""
 echo "ATM ekrani: $ADRES"
 
 # The screen must be opened from the address the terminal serves, never as a file.
-# A page opened from disk has no host to connect back to - docs/ortam.md.
+# A page opened from disk has no host to connect back to - ortam notları.
 if command -v open >/dev/null 2>&1; then
   open "$ADRES"
 elif command -v xdg-open >/dev/null 2>&1; then

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ITransport.cs
 //
 // What this file does: it describes "a line I can send a message down and receive a

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // WithdrawalAuthTests.cs
 //
 // What this file does: it checks the first message in this project that touches money -
@@ -27,7 +28,7 @@ namespace Atm.Tests;
 
 public class WithdrawalAuthTests
 {
-    // TR-DEMO-001, 2.500,00 TL. docs/model.md section 4.1.
+    // TR-DEMO-001, 2.500,00 TL. the domain model section 4.1.
     private const string Card = "4111111111111111";
     private const string UnknownCard = "4999999999999999";
 

@@ -1,9 +1,10 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ConservationChecker.cs
 //
 // What this file does: it is the central claim of this project, written as something that
 // can be run rather than something that can be said.
 //
-// The claim, from rule 3 (docs/proje-kurallari.md):
+// The claim, from rule 3:
 //
 //   an account was debited  -> either the cash reached the customer, or a reversal exists
 //   an account was credited -> the notes behind it reached a drawer
@@ -32,7 +33,7 @@
 // reconciliation reads: items in transit are listed, not alarmed about.
 //
 // What this file does NOT do: repair anything. It counts, names and stops. A checker that
-// corrected what it found would be the silent repair rule 6b (docs/proje-kurallari.md) forbids, and
+// corrected what it found would be the silent repair rule 6b forbids, and
 // the next run would show a clean book with the evidence removed.
 
 using Atm.Host;
@@ -437,7 +438,7 @@ public static class ConservationChecker
     /// <summary>A host journal line that credited an account.</summary>
     /// <remarks>
     /// Only the deposit commit credits, and it credits only what it says was STACKED - the
-    /// amount on the line is already that number (docs/protocol.md section 4.6). An agreed
+    /// amount on the line is already that number (the protocol spec section 4.6). An agreed
     /// deposit carries an amount and credits nothing.
     /// </remarks>
     private static bool IsCredit(JournalEntry entry) =>

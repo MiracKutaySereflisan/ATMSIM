@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // CashAcceptor.cs
 //
 // What this file does: it is the machine's mouth working the other way round - the part
@@ -20,7 +21,7 @@
 //
 // Stack happens BEFORE the host is told. A note in a drawer cannot be un-stacked, but a
 // message can be sent again for ever - so the uncertainty is put on the side that can be
-// repeated. See docs/protocol.md section 4.6.
+// repeated. See the protocol spec section 4.6.
 //
 // What this file does NOT do: decide whether a deposit is allowed. It counts and moves
 // paper. Whether the account may have it is the host's answer.

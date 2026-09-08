@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // HostServerTests.cs
 //
 // What this file does: it is the one place in this repository where a test uses a

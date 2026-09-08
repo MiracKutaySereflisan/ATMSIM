@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // IClock.cs
 //
 // What this file does: it hides "what time is it" and "wait a while" behind an

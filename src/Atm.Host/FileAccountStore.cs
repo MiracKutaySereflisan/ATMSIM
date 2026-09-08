@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // FileAccountStore.cs
 //
 // What this file does: it keeps the accounts in a file, so that a host which is stopped

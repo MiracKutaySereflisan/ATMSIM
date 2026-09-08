@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // DenominationPlan.cs
 //
 // What this file does: it carries the answer to "can this amount be handed over, and
@@ -10,7 +11,7 @@
 // asked "did this work" before it can be read is a plan that cannot be misread.
 //
 // Why the amount is repeated inside the plan: a plan travels into the authorisation
-// request (docs/protocol.md SS4.3) and the host re-adds the bundles and compares them to
+// request (the protocol spec SS4.3) and the host re-adds the bundles and compares them to
 // the amount. Two sides reading the same number differently is the most expensive kind
 // of mistake, so the number and its breakdown stay together.
 

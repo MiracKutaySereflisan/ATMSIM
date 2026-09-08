@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // DispenseAdviceTests.cs
 //
 // What this file does: it checks the message that finally moves the ledger - the

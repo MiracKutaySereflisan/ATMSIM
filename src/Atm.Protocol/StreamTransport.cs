@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // StreamTransport.cs
 //
 // What this file does: it is the real line. It carries the same ITransport that the

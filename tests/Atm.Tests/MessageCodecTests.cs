@@ -1,6 +1,7 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // MessageCodecTests.cs
 //
-// What this file does: it checks that what goes on the wire is what docs/protocol.md
+// What this file does: it checks that what goes on the wire is what the protocol spec
 // says goes on the wire, and that anything else is refused rather than guessed at.
 //
 // Why the wire field names are tested explicitly: the contract document names them in
@@ -150,7 +151,7 @@ public class MessageCodecTests
 
         var wire = MessageCodec.AsText(MessageCodec.Encode(envelope));
 
-        // docs/protocol.md section 4.3 writes the breakdown as {"d":20000,"n":1}. The
+        // the protocol spec section 4.3 writes the breakdown as {"d":20000,"n":1}. The
         // C# names are longer on purpose; this test is where the two vocabularies are
         // held together, so that renaming a property cannot silently change the wire.
         Assert.True(wire.Contains("\"denoms\":[{\"d\":20000,\"n\":1}"),

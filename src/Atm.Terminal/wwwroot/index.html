@@ -296,7 +296,7 @@
 
   /* ---------- servis paneli (gizli) ----------
      Bir ATM'nin arkasındaki servis kapağının karşılığı. Müşteri onu görmez; makineyi
-     çalıştıran kişi açar. Sunumda "şimdi hattı kesiyorum" demenin yeri burası.
+     çalıştıran kişi açar. Demoda "şimdi hattı kesiyorum" demenin yeri burası.
      Hiçbir düğmesi bir karar taşımaz: her biri terminale "operatör şuna bastı" der
      ve ne olacağına terminal karar verir (KARAR-053). */
   .servis {
@@ -477,7 +477,7 @@ const el = (id) => document.getElementById(id);
 function bagla() {
   // Same host and port the page itself came from. The page is served by the terminal,
   // so this is the terminal. Opening the file directly from disk would leave this
-  // pointing nowhere - which is why docs/ortam.md says the screen is opened from the
+  // pointing nowhere - which is why ortam notları says the screen is opened from the
   // address the terminal serves.
   const adres = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws";
   hat = new WebSocket(adres);
@@ -621,7 +621,7 @@ document.querySelectorAll("[data-demo]").forEach((tus) => {
 });
 
 el("tam-ekran").addEventListener("click", () => {
-  // Full screen is what makes the page stop looking like a page (rule 7 (docs/proje-kurallari.md)).
+  // Full screen is what makes the page stop looking like a page (rule 7).
   // Wrapped because a browser may refuse it, and a refused promise here must not take
   // the rest of the screen down with it.
   const kok = document.documentElement;

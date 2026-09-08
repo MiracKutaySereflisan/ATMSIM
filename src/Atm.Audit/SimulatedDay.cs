@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // SimulatedDay.cs
 //
 // What this file does: it puts a whole ATM in one process - a host, a machine, cassettes,
@@ -10,7 +11,7 @@
 // slightly different ATMs that drift apart. It sits in Atm.Audit because everything here
 // is about looking at the system from outside it.
 //
-// Two properties this harness must have, and both are rule 5 (docs/proje-kurallari.md):
+// Two properties this harness must have, and both are rule 5:
 //
 //   It is DETERMINISTIC. The clock is virtual, nothing sleeps, and the same sequence of
 //   calls produces the same journals byte for byte. A run that cannot be repeated cannot
@@ -109,7 +110,7 @@ public class SimulatedDay
     /// <summary>The day this machine is working in. Moves only when the cutover succeeds.</summary>
     public BusinessDay Day { get; }
 
-    /// <summary>Closes the day against the host. See docs/protocol.md section 4.7.</summary>
+    /// <summary>Closes the day against the host. See the protocol spec section 4.7.</summary>
     public CutoverFlow Cutover { get; }
 
     /// <summary>The machine's own record - one for the whole machine, both flows write here.</summary>

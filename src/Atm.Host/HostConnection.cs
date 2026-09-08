@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // HostConnection.cs
 //
 // What this file does: it is the host's conversation loop. Read a message, hand it to

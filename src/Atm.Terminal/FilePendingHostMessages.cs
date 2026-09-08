@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // FilePendingHostMessages.cs
 //
 // What this file does: it keeps the queue of unacknowledged messages in a file, so that a
@@ -7,7 +8,7 @@
 // Why this matters more than it looks: the messages in this queue are about money that has
 // already moved. A reversal that disappears when the machine restarts leaves a hold on a
 // customer's account with nothing to release it; a dispense advice that disappears leaves
-// cash out of a drawer and in nobody's ledger. docs/protocol.md section 4.5 states the
+// cash out of a drawer and in nobody's ledger. the protocol spec section 4.5 states the
 // rule plainly - the queue is written to disk - and this is where that promise is kept
 // (KARAR-013).
 //

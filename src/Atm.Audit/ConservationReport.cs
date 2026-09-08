@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ConservationReport.cs
 //
 // What this file does: it holds what the checker found, and it draws the one line that
@@ -12,7 +13,7 @@
 // not - look at that one.
 //
 // An unexplained difference is the finding this project exists to produce. Instruction
-// section 3 calls it a violation of money conservation; rule 6b (docs/proje-kurallari.md) requires it
+// section 3 calls it a violation of money conservation; rule 6b requires it
 // to fail loudly rather than be quietly repaired. Hence ThrowIfViolated: the callers that
 // run unattended - the scenario runner in Phase 4, the end-of-day script - call it and
 // stop. Callers that want to look at the whole picture read the lists instead.
@@ -93,7 +94,7 @@ public sealed record ConservationReport
     /// Stops the caller when money cannot be accounted for.
     /// </summary>
     /// <remarks>
-    /// This is rule 6b (docs/proje-kurallari.md) in one method: an invariant that is broken has to
+    /// This is rule 6b in one method: an invariant that is broken has to
     /// be loud. A checker that returned a report nobody read would be a checker that
     /// lets a wrong balance reach a demonstration.
     /// </remarks>

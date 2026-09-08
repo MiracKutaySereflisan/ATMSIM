@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ScenarioTests.cs
 //
 // What these tests are for: the scenario machinery itself - the reader that refuses what it
@@ -11,7 +12,7 @@
 //
 // The test to read first is TheDetectionPointSaysWhereADifferenceBecameVisible. It is the
 // only place the three answers - at once, at day end, nowhere - are all produced and told
-// apart, and the measurement rule 3 (docs/proje-kurallari.md) asks for rests on that distinction.
+// apart, and the measurement rule 3 asks for rests on that distinction.
 
 using Atm.Audit;
 using Atm.Protocol;
@@ -67,7 +68,7 @@ public class ScenarioTests
     {
         // "tutarr" instead of "tutar". Ignored, this would run a withdrawal of nothing and
         // report a green scenario - a harness congratulating us for a fault we forgot to
-        // cause (docs/scenarios.md section 2).
+        // cause (the scenario format section 2).
         var folder = WriteScenario(Good.Replace("\"tutar\"", "\"tutarr\""));
 
         try

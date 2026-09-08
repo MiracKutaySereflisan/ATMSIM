@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 # run-scenarios.sh - Runs every fault scenario in scenarios/ and prints what happened.
 #
 # What this is: the deliverable of Phase 4. Each file in scenarios/ describes one way for
-# something to go wrong, in data rather than in code (rule 5 (docs/proje-kurallari.md)), together with
+# something to go wrong, in data rather than in code (rule 5), together with
 # what SHOULD happen - written before the run, never adjusted to it.
 #
 # What the output says, in order: one line per scenario, then the coverage matrix with its

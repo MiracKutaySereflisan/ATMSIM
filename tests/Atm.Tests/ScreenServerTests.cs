@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ScreenServerTests.cs
 //
 // What these tests check: that a real browser could actually talk to this server.

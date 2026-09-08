@@ -1,7 +1,7 @@
 {
   "id": "C-KD-DAGITIM",
   "baslik": "Makine yetkilendirilenden azını verdi",
-  "aciklama": "kural §4.3 (docs/proje-kurallari.md): gereken tam iptal değil, farkın düzeltilmesidir. Müşteri 200 lira aldı; hesaptan 200 lira düşmeli, 350 değil.",
+  "aciklama": "kural §4.3: gereken tam iptal değil, farkın düzeltilmesidir. Müşteri 200 lira aldı; hesaptan 200 lira düşmeli, 350 değil.",
   "seed": 4006,
   "eksen": {
     "islem": "cekim",

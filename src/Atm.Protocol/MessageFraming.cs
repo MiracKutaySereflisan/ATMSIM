@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // MessageFraming.cs
 //
 // What this file does: it puts a four-byte length in front of every message and reads
@@ -6,7 +7,7 @@
 // Why this is needed at all: TCP delivers a byte stream, not a message stream. Two
 // messages sent one after another can arrive stuck together, and one message can
 // arrive split in half. Saying where a message ends is the sender's job. See
-// docs/protocol.md section 1.1.
+// the protocol spec section 1.1.
 //
 // Why a length prefix and not a separator character: a separator only works while the
 // separator never appears inside a message. The day it does - in an error text, in an

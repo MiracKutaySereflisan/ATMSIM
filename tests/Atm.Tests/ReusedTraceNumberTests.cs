@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ReusedTraceNumberTests.cs
 //
 // What this file does: it checks the two halves of failure A-03 - the one found on

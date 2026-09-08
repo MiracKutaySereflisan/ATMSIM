@@ -1,11 +1,12 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // DenominationPlanner.cs
 //
 // What this file does: given the cassettes a machine is loaded with and an amount, it
 // works out exactly which notes would be handed over - or says that they cannot be.
 //
-// Why this runs BEFORE the authorisation and not after (kural 4.6 (docs/proje-kurallari.md)): asking the host
+// Why this runs BEFORE the authorisation and not after (kural 4.6): asking the host
 // first and counting notes afterwards produces a debit for money the machine then cannot
-// pay. That debit has to be reversed, and a reversal can itself be lost (kural 4.2 (docs/proje-kurallari.md)).
+// pay. That debit has to be reversed, and a reversal can itself be lost (kural 4.2).
 // Running the count first turns a two-step failure into a screen message: the machine
 // simply never asks for money it cannot hand over.
 //
@@ -21,7 +22,7 @@
 // time with the number of notes taken from it bounded by what it holds.
 //
 // The choice between equally short answers is fixed, not arbitrary, because a plan has
-// to be reproducible from its inputs alone (kural 5 (docs/proje-kurallari.md)): fewest notes first, and where
+// to be reproducible from its inputs alone (kural 5): fewest notes first, and where
 // two answers use the same number of notes, the one that takes from the fuller cassettes.
 // Cassettes emptying one after another leaves a machine that still dispenses something;
 // cassettes emptying together leaves a machine that is simply out of service.

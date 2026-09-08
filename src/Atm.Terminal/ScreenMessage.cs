@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ScreenMessage.cs
 //
 // What this file does: it defines the entire vocabulary the browser screen and the
@@ -6,7 +7,7 @@
 //   terminal -> screen : ScreenView  - "draw exactly this"
 //   screen -> terminal : ScreenEvent - "this physical thing happened"
 //
-// Why this is a SEPARATE contract from docs/protocol.md: the browser must never see
+// Why this is a SEPARATE contract from the protocol spec: the browser must never see
 // a host message. If the screen were handed the host's answer, then somewhere in the
 // browser a line of code would have to look at a response code and decide what it
 // means - and that decision is business logic. The moment business logic can be
@@ -74,7 +75,7 @@ public sealed record ScreenView
     /// </summary>
     /// <remarks>
     /// A separate port from <see cref="CashPort"/> because on the machine they are two
-    /// separate holes (rule 7 (docs/proje-kurallari.md)), and because they mean opposite things: the
+    /// separate holes (rule 7), and because they mean opposite things: the
     /// cash mouth is where the bank's money becomes the customer's, the deposit slot is
     /// where the customer's money becomes the bank's. Drawing them as one hole would hide
     /// the exact distinction this phase exists to show.
@@ -94,7 +95,7 @@ public sealed record ScreenView
     /// Separate from <see cref="Lines"/> because it is a different piece of paper: the
     /// screen's lines are read now and gone, the receipt is taken away and kept. The
     /// browser draws it in the receipt slot and it has to stay readable and printable
-    /// (rule 7 (docs/proje-kurallari.md)). Composed by the terminal, like everything else - a
+    /// (rule 7). Composed by the terminal, like everything else - a
     /// browser that could write its own receipt could write any amount on it.
     /// </remarks>
     public IReadOnlyList<string> ReceiptLines { get; init; } = Array.Empty<string>();

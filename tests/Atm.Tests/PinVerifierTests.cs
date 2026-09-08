@@ -1,11 +1,12 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // PinVerifierTests.cs
 //
-// What this file does: it checks the PIN rules of docs/protocol.md section 4.1 -
+// What this file does: it checks the PIN rules of the protocol spec section 4.1 -
 // three attempts, the counter surviving between attempts, a correct PIN clearing it,
 // and an unknown card being refused without being counted.
 //
 // The PINs used here belong to invented cards that exist only in this repository and
-// are written down in docs/kurulum.md so the demo can be used. Nothing here is a real
+// are written down in the setup notes so the demo can be used. Nothing here is a real
 // credential. What the tests do check is the property that matters: the verifier
 // stores a value it cannot reverse, and two cards with the same PIN do not look alike.
 
@@ -140,7 +141,7 @@ public class PinVerifierTests
     {
         // The seed values in PinVerifier.WithDemoCards were produced once, outside the
         // source. This is the test that says they still belong to the PIN written in
-        // docs/kurulum.md - if someone regenerates one and forgets the other, the demo
+        // the setup notes - if someone regenerates one and forgets the other, the demo
         // would fail in front of an audience instead of here.
         var verifier = PinVerifier.WithDemoCards();
 

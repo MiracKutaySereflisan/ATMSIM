@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ITerminalJournal.cs
 //
 // What this file does: it is the terminal's own record of what it did - one line per
@@ -37,7 +38,7 @@ namespace Atm.Terminal;
 /// </summary>
 /// <remarks>
 /// The list separates events a real machine can tell apart. "Cash presented" and "cash
-/// taken" are two lines because they are two events (rule 4.4 (docs/proje-kurallari.md)); collapsing
+/// taken" are two lines because they are two events (rule 4.4); collapsing
 /// them would make the machine unable to say that money came out and nobody took it -
 /// which is precisely the state the retract bin exists for.
 /// </remarks>
@@ -130,7 +131,7 @@ public static class TerminalEvent
     /// <summary>No acknowledgement. It goes into the queue and will be sent again.</summary>
     public const string DepositCommitQueued = "DEPOSIT_COMMIT_QUEUED";
 
-    // --- End of day (docs/protocol.md section 4.7) ---
+    // --- End of day (the protocol spec section 4.7) ---
 
     /// <summary>
     /// A cutover was wanted and not even attempted, because the queue was not empty.

@@ -1,9 +1,10 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // HostServer.cs
 //
 // What this file does: it listens on a TCP port, accepts a terminal, and runs one
 // conversation at a time.
 //
-// Why one at a time: this simulator has one ATM (docs/model.md, rule 3 (docs/proje-kurallari.md)
+// Why one at a time: this simulator has one ATM (the domain model, rule 3
 // scope). Accepting several terminals would mean deciding what happens when two of
 // them ask about the same account in the same millisecond - a real and interesting
 // question, and one this project has declared out of scope rather than answered

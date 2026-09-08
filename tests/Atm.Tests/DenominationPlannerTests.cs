@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // DenominationPlannerTests.cs
 //
 // These tests are the reason KARAR-011 chose an exact solution over the greedy one. The

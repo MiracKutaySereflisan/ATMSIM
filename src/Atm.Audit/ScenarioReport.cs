@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ScenarioReport.cs
 //
 // What this file does: it runs every scenario file and prints what happened - one line per
@@ -52,7 +53,7 @@ public static class ScenarioReport
 
         // The same files, the same seeds, the same steps - and every rule of the domain
         // switched off. Nothing else differs, which is the only condition under which the
-        // two columns below can be read against each other (rule 5 (docs/proje-kurallari.md)).
+        // two columns below can be read against each other (rule 5).
         var naive = ScenarioRunner.RunAll(scenarios, Hardening.None);
 
         Console.WriteLine();
@@ -85,7 +86,7 @@ public static class ScenarioReport
 
         Console.WriteLine(
             $"SONUÇ: {failed} senaryo beklenenden farklı bitti. " +
-            "Beklentiyi sonuca göre güncellemek yasak (docs/scenarios.md §7).");
+            "Beklentiyi sonuca göre güncellemek yasak (the scenario format §7).");
 
         return 1;
     }
@@ -129,7 +130,7 @@ public static class ScenarioReport
             "tek bir sayıya");
         lines.Add(
             "  indirmek, aynı parayı birden fazla kontrolün adlandırdığı durumlarda " +
-            "yanıltır (kural §9 (docs/proje-kurallari.md)).");
+            "yanıltır (kural §9).");
 
         return string.Join(Environment.NewLine, lines);
     }

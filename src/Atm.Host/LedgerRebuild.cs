@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // LedgerRebuild.cs
 //
 // What this file does: it works out what every account's balance SHOULD be by reading the

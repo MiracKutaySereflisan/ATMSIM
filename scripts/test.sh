@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 # test.sh - Builds, then runs every automated test.
 #
 # Exits 0 when everything is green and 1 when anything is red, so this script can be
@@ -6,7 +7,7 @@
 #
 # Note: this does not call "dotnet test". The test project carries its own runner
 # (tests/Atm.Tests/TestKit/) because the build environment cannot reach the package
-# feed - see KARARLAR.md KARAR-006. From the outside the difference is invisible.
+# feed - see karar kaydı KARAR-006. From the outside the difference is invisible.
 #
 # Usage: ./scripts/test.sh
 set -euo pipefail

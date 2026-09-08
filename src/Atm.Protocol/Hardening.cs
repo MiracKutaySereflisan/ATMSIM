@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // Hardening.cs
 //
 // What this file does: it names, one by one, the things this system does BECAUSE of a fact
@@ -7,7 +8,7 @@
 // works". It is "these particular rules are what keep the money straight, and here is what
 // happens without them". A claim like that can only be measured by comparison, and a
 // comparison is only readable when both sides are run under exactly the same conditions
-// (rule 5 (docs/proje-kurallari.md)): the same scenario files, the same seeds, the same steps.
+// (rule 5): the same scenario files, the same seeds, the same steps.
 //
 // Why switches rather than a second, naive copy of the code: two copies drift. The naive
 // copy would slowly stop being the same program with one rule removed and start being a

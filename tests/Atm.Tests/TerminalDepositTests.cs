@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // TerminalDepositTests.cs
 //
 // What these tests are for: the screen side of a deposit - what the customer sees, in what
@@ -285,7 +286,7 @@ public class TerminalDepositTests
     // refusal it produces is an unknown card, and an unknown card never gets past the PIN
     // to the menu. The path itself is covered at flow level in DepositTests.cs; driving it
     // through the screen needs fault injection, which arrives in Phase 4. Recorded here
-    // rather than faked with a weakened test (rule 9 (docs/proje-kurallari.md)).
+    // rather than faked with a weakened test (rule 9).
 
     [Fact]
     public void AHostThatNeverAnswersMeansTheNotesComeBackOut()

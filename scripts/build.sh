@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 # build.sh - Builds every project in the solution.
 #
 # Why a script instead of typing the dotnet command: the owner of this project does

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // FileTerminalJournal.cs
 //
 // What this file does: it writes the terminal's record to a file, one line per event, and

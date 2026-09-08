@@ -1,10 +1,11 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // MessageCodec.cs
 //
 // What this file does: it turns an envelope into the bytes that go on the wire, and
 // those bytes back into an envelope.
 //
 // Why it is one file: the translation between C# names (PascalCase) and wire names
-// (camelCase, as docs/protocol.md specifies) has to happen in exactly one place. Two
+// (camelCase, as the protocol spec specifies) has to happen in exactly one place. Two
 // places would eventually disagree, and the disagreement would only show up on the
 // wire - the most expensive place to find it.
 //
@@ -22,7 +23,7 @@ using System.Text.Json.Serialization;
 
 namespace Atm.Protocol;
 
-/// <summary>Thrown when bytes on the wire do not obey docs/protocol.md.</summary>
+/// <summary>Thrown when bytes on the wire do not obey the protocol spec.</summary>
 public sealed class ProtocolViolationException(string message) : Exception(message);
 
 /// <summary>Converts between <see cref="Envelope"/> and the UTF-8 JSON on the wire.</summary>

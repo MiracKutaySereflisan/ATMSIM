@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // DepositTests.cs
 //
 // What these tests are for: the host's side of a deposit - what it agrees to, what it

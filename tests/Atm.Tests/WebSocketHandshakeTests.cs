@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // WebSocketHandshakeTests.cs
 //
 // What these tests check: that the terminal recognises a real upgrade request, refuses

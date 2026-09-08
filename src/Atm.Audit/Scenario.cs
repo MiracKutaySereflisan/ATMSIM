@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // Scenario.cs
 //
 // What this file does: it reads one scenario file and turns it into something that can be
@@ -23,7 +24,7 @@ using System.Text.Json.Serialization;
 
 namespace Atm.Audit;
 
-/// <summary>The three coordinates of the coverage matrix. See docs/scenarios.md section 5.</summary>
+/// <summary>The three coordinates of the coverage matrix. See the scenario format section 5.</summary>
 public sealed record ScenarioAxis(string Islem, string Ariza, string An)
 {
     /// <summary>The transactions a scenario can be about.</summary>
@@ -51,7 +52,7 @@ public sealed record ScenarioAxis(string Islem, string Ariza, string An)
 /// <summary>One step of a scenario. Which fields matter depends on <see cref="Adim"/>.</summary>
 public sealed record ScenarioStep
 {
-    /// <summary>Which step. The names are in docs/scenarios.md section 4.</summary>
+    /// <summary>Which step. The names are in the scenario format section 4.</summary>
     public required string Adim { get; init; }
 
     public string Kart { get; init; } = "";
@@ -154,7 +155,7 @@ public sealed record Scenario
             // would produce a fault that never happens and a scenario that passes.
             throw new InvalidDataException(
                 $"{path}: okunamadı. Tanınmayan bir alan ya da yanlış bir tip olabilir - " +
-                $"bilinmeyen alanlar bilerek hata sayılıyor (docs/scenarios.md §2). " +
+                $"bilinmeyen alanlar bilerek hata sayılıyor (the scenario format §2). " +
                 $"Ayrıntı: {ex.Message}", ex);
         }
 

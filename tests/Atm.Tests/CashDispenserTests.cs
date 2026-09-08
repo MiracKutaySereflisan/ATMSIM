@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // CashDispenserTests.cs
 //
 // What this file does: it checks that money only ever MOVES. Every test here ends by

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // TerminalFlowTests.cs
 //
 // What these tests check: the whole behaviour of the machine, from the card going in
@@ -217,7 +218,7 @@ public class TerminalFlowTests
         //
         // Phase 2 breaks this. An unanswered WITHDRAWAL cannot be treated this way:
         // the host may have debited the account already and the terminal does not
-        // know. The answer there is a reversal (rule 4.1 (docs/proje-kurallari.md)). This test
+        // know. The answer there is a reversal (rule 4.1). This test
         // exists partly to mark the place where that difference begins.
         var flow = FlowWith(request => request.Type == MessageType.BalanceRequest
             ? null

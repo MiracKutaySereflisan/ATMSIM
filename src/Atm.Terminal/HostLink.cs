@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // HostLink.cs
 //
 // What this file does: it makes the real connection to the host - one TCP socket to

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // ScreenContractTests.cs
 //
 // What these tests check: the boundary between the terminal and the browser. Two

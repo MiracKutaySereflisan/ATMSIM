@@ -9,7 +9,7 @@
   GUID for every project and every build configuration, which makes it unreadable
   by a human and painful to merge. .slnx is plain XML and says exactly what it
   means. Supported by the .NET SDK from 9.0.200 onward; we target .NET 10.
-  See KARARLAR.md KARAR-005.
+  See karar kaydı KARAR-005.
 -->
 <Solution>
   <Folder Name="/src/">

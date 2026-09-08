@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // Cassette.cs
 //
 // What this file does: it holds one cassette - the drawer inside the machine that
@@ -11,16 +12,16 @@
 // never be unsure about.
 //
 // Why the count is guarded rather than a plain public field: a cassette that can go
-// negative is a cassette that can invent money. docs/model.md's conservation equation
+// negative is a cassette that can invent money. the domain model's conservation equation
 // counts notes across seven buckets, and a negative count in one of them makes the sum
 // balance while the machine is wrong. So taking more than there is throws, loudly,
-// rather than quietly clamping to zero (kural 6b (docs/proje-kurallari.md)).
+// rather than quietly clamping to zero (kural 6b).
 //
 // Amounts are whole kurus, never decimals - KARAR-008.
 
 namespace Atm.Terminal;
 
-/// <summary>What a cassette is allowed to do with notes (docs/model.md SS2).</summary>
+/// <summary>What a cassette is allowed to do with notes (the domain model SS2).</summary>
 public enum CassetteKind
 {
     /// <summary>Notes leave this cassette and never come back to it.</summary>
@@ -56,7 +57,7 @@ public sealed class Cassette
     /// <summary>The value of one note in this cassette, in kurus (KARAR-008).</summary>
     public long Denomination { get; }
 
-    /// <summary>Whether deposited notes may be stored here (docs/model.md SS2).</summary>
+    /// <summary>Whether deposited notes may be stored here (the domain model SS2).</summary>
     public CassetteKind Kind { get; }
 
     /// <summary>How many notes are in the drawer right now.</summary>
@@ -88,7 +89,7 @@ public sealed class Cassette
     /// Refused on a dispense-only drawer, and that is not a formality: a machine that
     /// quietly dropped deposited notes into a cassette it can only pay out of would be
     /// handing a customer's banknote to the next customer with nothing in between. Which
-    /// drawers may take notes back is a property of the hardware (docs/model.md section 2),
+    /// drawers may take notes back is a property of the hardware (the domain model section 2),
     /// so the type is where the rule belongs.
     /// </remarks>
     public void Put(int notes)

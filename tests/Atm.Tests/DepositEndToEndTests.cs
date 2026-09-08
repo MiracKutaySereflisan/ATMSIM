@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // DepositEndToEndTests.cs
 //
 // What these tests are for: a whole deposit, from the notes going in to the account

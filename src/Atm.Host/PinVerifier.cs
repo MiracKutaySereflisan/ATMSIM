@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 // PinVerifier.cs
 //
 // What this file does: it answers one question - "does this PIN belong to this card"
@@ -12,7 +13,7 @@
 // An honest statement of what that claim is worth here. The cards in this project
 // are invented, so there is no real secret to protect; the discipline is kept because
 // a habit of storing PINs is the thing that gets carried into a system where there IS
-// one. The demo PINs are written down in docs/kurulum.md, because a demo needs them,
+// one. The demo PINs are written down in the setup notes, because a demo needs them,
 // exactly as the test PINs of a test environment are written down. The property being
 // enforced is narrower and worth stating precisely: THE SYSTEM does not store or log
 // the PIN, and no code path can print it.
@@ -28,7 +29,7 @@
 // Try counting lives here rather than in the account, because it is not a property of
 // the money. It resets on a correct PIN and it is per card, not per session: a
 // customer who fails twice, takes the card out and comes back has one try left, not
-// three. Instruction section 4 has no rule for this; docs/protocol.md section 4.1 and
+// three. Instruction section 4 has no rule for this; the protocol spec section 4.1 and
 // response code 75 do.
 
 using System.Security.Cryptography;
@@ -42,7 +43,7 @@ namespace Atm.Host;
 /// <param name="VerificationValue">Lower-case hex SHA-256 of salt + PIN.</param>
 public readonly record struct PinVerificationValue(string Salt, string VerificationValue);
 
-/// <summary>The outcome of one PIN check, in the terms docs/protocol.md uses.</summary>
+/// <summary>The outcome of one PIN check, in the terms the protocol spec uses.</summary>
 /// <param name="Rc">Response code: 00 correct, 55 wrong, 75 no tries left, 14 unknown card.</param>
 /// <param name="RemainingTries">How many attempts are left for this card.</param>
 public readonly record struct PinCheckResult(string Rc, int RemainingTries)
