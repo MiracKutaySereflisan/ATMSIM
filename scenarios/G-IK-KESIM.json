@@ -1,0 +1,41 @@
+{
+  "id": "G-IK-KESIM",
+  "baslik": "Kesim isteği hosta hiç ulaşmadı",
+  "aciklama": "Terminal günü kapattığını sanmamalı: host o günü hâlâ açık sayıyor.",
+  "seed": 4304,
+  "eksen": {
+    "islem": "gun-sonu",
+    "ariza": "istek-kaybi",
+    "an": "kesim"
+  },
+  "adimlar": [
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 445
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    },
+    {
+      "adim": "istekleri-yut",
+      "mesaj": "CutoverRequest"
+    },
+    {
+      "adim": "gun-kapat",
+      "stan": 903
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 35000,
+    "hesap-farki": -35000,
+    "denetim": "temiz",
+    "tespit": "yok",
+    "gun-kapandi": false
+  }
+}

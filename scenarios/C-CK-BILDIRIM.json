@@ -1,0 +1,39 @@
+{
+  "id": "C-CK-BILDIRIM",
+  "baslik": "Para verildi, dağıtım bildiriminin cevabı kayboldu",
+  "aciklama": "Para müşteride, host haberi almış ama terminal bunu bilmiyor. Bildirim tekrar gönderilir; hostun ikinci kez borçlandırmaması gerekir (tekrar bağışıklığı).",
+  "seed": 4004,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "cevap-kaybi",
+    "an": "bildirim"
+  },
+  "adimlar": [
+    {
+      "adim": "cevaplari-yut",
+      "mesaj": "DispenseAdvice"
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 404
+    },
+    {
+      "adim": "hat-gelsin"
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 35000,
+    "hesap-farki": -35000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

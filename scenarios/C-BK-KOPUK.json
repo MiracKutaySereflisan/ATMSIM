@@ -1,0 +1,51 @@
+{
+  "id": "C-BK-KOPUK",
+  "baslik": "Kuramadığı tutar için söz verip bildirimi kaybetmek",
+  "aciklama": "C-BK-YETKI'nin pahalı hâli. Kupür kontrolü yetkilendirmeden önce yapılmazsa host bir söz verir, makine tek banknot veremez, ve o sözü kapatacak bildirim de yoldadır. kural §4.6 (docs/proje-kurallari.md)'nın bedelinin göründüğü senaryo budur.",
+  "seed": 4013,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "bos-kaset",
+    "an": "yetkilendirme"
+  },
+  "adimlar": [
+    {
+      "adim": "kaset-ayarla",
+      "kupur": 20000,
+      "adet": 0
+    },
+    {
+      "adim": "kaset-ayarla",
+      "kupur": 10000,
+      "adet": 0
+    },
+    {
+      "adim": "kaset-ayarla",
+      "kupur": 5000,
+      "adet": 0
+    },
+    {
+      "adim": "istekleri-yut",
+      "mesaj": "DispenseAdvice"
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 413
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 600
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

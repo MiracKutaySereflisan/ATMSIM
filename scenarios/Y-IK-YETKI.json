@@ -1,0 +1,40 @@
+{
+  "id": "Y-IK-YETKI",
+  "baslik": "Yatırma yetkilendirmesi hosta hiç ulaşmadı",
+  "aciklama": "Y-CK-YETKI ile ikizi ve tehlikeli olanı bu: host böyle bir yatırmadan haberdar değil. Sessizliği onay sayan bir makine banknotları kasete koyar ve hesaba yazdıramaz — para içeride kalır, kimsenin hesabında görünmeden.",
+  "seed": 4108,
+  "eksen": {
+    "islem": "yatirma",
+    "ariza": "istek-kaybi",
+    "an": "yetkilendirme"
+  },
+  "adimlar": [
+    {
+      "adim": "istekleri-yut",
+      "mesaj": "DepositAuthRequest"
+    },
+    {
+      "adim": "yatir",
+      "kart": "4111111111111111",
+      "banknotlar": "100x5",
+      "onay": true,
+      "stan": 428
+    },
+    {
+      "adim": "hat-gelsin"
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 50000,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

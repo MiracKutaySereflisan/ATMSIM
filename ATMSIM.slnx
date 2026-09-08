@@ -1,0 +1,24 @@
+<!--
+  ATMSIM.slnx - Solution file for the ATM simulator.
+
+  What this is: the list of projects that make up ATMSIM, in one place, so that a
+  single "dotnet build ATMSIM.slnx" builds everything and "./scripts/test.sh" runs every
+  test project.
+
+  Why the .slnx format instead of the classic .sln: the classic format stores a
+  GUID for every project and every build configuration, which makes it unreadable
+  by a human and painful to merge. .slnx is plain XML and says exactly what it
+  means. Supported by the .NET SDK from 9.0.200 onward; we target .NET 10.
+  See KARARLAR.md KARAR-005.
+-->
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Atm.Protocol/Atm.Protocol.csproj" />
+    <Project Path="src/Atm.Host/Atm.Host.csproj" />
+    <Project Path="src/Atm.Terminal/Atm.Terminal.csproj" />
+    <Project Path="src/Atm.Audit/Atm.Audit.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Atm.Tests/Atm.Tests.csproj" />
+  </Folder>
+</Solution>

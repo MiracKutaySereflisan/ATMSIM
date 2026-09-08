@@ -1,0 +1,24 @@
+<!--
+  Atm.Audit.csproj - The third party: it reads both records and compares them.
+
+  Why this is its own project and not a folder inside the host or the terminal: it has to
+  see both, and neither of them may see the other. A reconciliation that lived inside the
+  host could only check the host against itself, which is the one check that can never
+  fail. In a real bank this work is done by neither the machine nor the switch, and the
+  code says the same thing. See KARARLAR.md KARAR-035.
+
+  It is also a program, and that is the point of Phase 2g: the central claim of this
+  project has to be something that can be RUN, not something that is written down.
+  scripts/check.sh plays a day through the machine and prints what does and does not
+  add up.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Atm.Protocol/Atm.Protocol.csproj" />
+    <ProjectReference Include="../Atm.Host/Atm.Host.csproj" />
+    <ProjectReference Include="../Atm.Terminal/Atm.Terminal.csproj" />
+  </ItemGroup>
+</Project>

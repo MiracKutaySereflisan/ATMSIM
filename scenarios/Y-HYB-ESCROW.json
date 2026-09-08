@@ -1,0 +1,39 @@
+{
+  "id": "Y-HYB-ESCROW",
+  "baslik": "Para ara kasadayken host yeniden başladı",
+  "aciklama": "Host, kabul ettiği ama kapanmamış yatırmayı defterinden geri kurabiliyor mu? Kuramazsa kesinleştirme 'böyle bir yatırma yok' diye reddedilir ve banknot çekmecede kalır, hesapta karşılığı olmadan.",
+  "seed": 4106,
+  "eksen": {
+    "islem": "yatirma",
+    "ariza": "host-yeniden-baslatma",
+    "an": "escrow"
+  },
+  "adimlar": [
+    {
+      "adim": "yatir-basla",
+      "kart": "4111111111111111",
+      "banknotlar": "100x5",
+      "stan": 426
+    },
+    {
+      "adim": "host-yeniden-baslat"
+    },
+    {
+      "adim": "yatir-bitir",
+      "onay": true
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 50000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

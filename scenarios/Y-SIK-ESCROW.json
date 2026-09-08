@@ -1,0 +1,36 @@
+{
+  "id": "Y-SIK-ESCROW",
+  "baslik": "Banknotların hiçbiri kasete ulaşamadı",
+  "aciklama": "Sıkışan para ne ara kasada ne kasette — üçüncü bir kovada. Hesap hiç artmamalı; para müşteriye de dönmüyor, çünkü mekanizmanın içinde.",
+  "seed": 4105,
+  "eksen": {
+    "islem": "yatirma",
+    "ariza": "sikisma",
+    "an": "escrow"
+  },
+  "adimlar": [
+    {
+      "adim": "yatirma-sikismasi"
+    },
+    {
+      "adim": "yatir",
+      "kart": "4111111111111111",
+      "banknotlar": "100x5",
+      "onay": true,
+      "stan": 425
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

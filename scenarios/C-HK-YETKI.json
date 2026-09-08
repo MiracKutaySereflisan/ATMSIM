@@ -1,0 +1,38 @@
+{
+  "id": "C-HK-YETKI",
+  "baslik": "Hat yetkilendirme anında tamamen kopuk",
+  "aciklama": "Cevapsızlığın en yalın hâli: hiçbir mesaj gitmiyor. Ters kayıt üretilir ve hat gelince gönderilir.",
+  "seed": 4014,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "hat-kopmasi",
+    "an": "yetkilendirme"
+  },
+  "adimlar": [
+    {
+      "adim": "hat-kes"
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 414
+    },
+    {
+      "adim": "hat-gelsin"
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 600
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

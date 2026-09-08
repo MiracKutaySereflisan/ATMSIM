@@ -1,0 +1,37 @@
+{
+  "id": "G-YOK-KESIM",
+  "baslik": "Temiz bir günün kapanışı",
+  "aciklama": "İki taraf da kendi defterinden sayar; tutarsa gün kapanır.",
+  "seed": 4301,
+  "eksen": {
+    "islem": "gun-sonu",
+    "ariza": "yok",
+    "an": "bosta"
+  },
+  "adimlar": [
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 441
+    },
+    {
+      "adim": "yatir",
+      "kart": "4111111111111111",
+      "banknotlar": "100x3",
+      "onay": true,
+      "stan": 442
+    },
+    {
+      "adim": "gun-kapat",
+      "stan": 900
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 35000,
+    "hesap-farki": -5000,
+    "denetim": "temiz",
+    "tespit": "yok",
+    "gun-kapandi": true
+  }
+}

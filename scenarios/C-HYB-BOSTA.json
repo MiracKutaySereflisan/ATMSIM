@@ -1,0 +1,28 @@
+{
+  "id": "C-HYB-BOSTA",
+  "baslik": "Hiçbir şey yokken host yeniden başladı",
+  "aciklama": "Kıyas noktası: yeniden başlatmanın kendisi tek başına hiçbir şeyi bozmamalı.",
+  "seed": 4015,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "host-yeniden-baslatma",
+    "an": "bosta"
+  },
+  "adimlar": [
+    {
+      "adim": "host-yeniden-baslat"
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 415
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 35000,
+    "hesap-farki": -35000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

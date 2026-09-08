@@ -1,0 +1,39 @@
+{
+  "id": "C-IK-BILDIRIM",
+  "baslik": "Para verildi, dağıtım bildirimi hosta hiç ulaşmadı",
+  "aciklama": "Gün içinde kitabı gerçekten dengesiz bırakan an: para dışarıda, hesap kıpırdamamış. Kuyruk boşalana kadar bu bir 'açıklanan fark'tır, sonrasında kapanır.",
+  "seed": 4005,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "istek-kaybi",
+    "an": "bildirim"
+  },
+  "adimlar": [
+    {
+      "adim": "istekleri-yut",
+      "mesaj": "DispenseAdvice"
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 405
+    },
+    {
+      "adim": "hat-gelsin"
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 35000,
+    "hesap-farki": -35000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

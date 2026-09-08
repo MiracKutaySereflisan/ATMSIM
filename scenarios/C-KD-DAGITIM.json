@@ -1,0 +1,36 @@
+{
+  "id": "C-KD-DAGITIM",
+  "baslik": "Makine yetkilendirilenden azını verdi",
+  "aciklama": "kural §4.3 (docs/proje-kurallari.md): gereken tam iptal değil, farkın düzeltilmesidir. Müşteri 200 lira aldı; hesaptan 200 lira düşmeli, 350 değil.",
+  "seed": 4006,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "kismi-dagitim",
+    "an": "dagitim"
+  },
+  "adimlar": [
+    {
+      "adim": "eksik-ver",
+      "en-fazla": 20000
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 406
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 20000,
+    "hesap-farki": -20000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

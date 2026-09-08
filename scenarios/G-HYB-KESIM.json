@@ -1,0 +1,40 @@
+{
+  "id": "G-HYB-KESIM",
+  "baslik": "Gün kapanmadan host yeniden başladı",
+  "aciklama": "Kapatılacak günün toplamları hostun belleğinde değil defterinde duruyor mu? Durmuyorsa yeniden başlamış bir host o günü sıfır toplamla kapatmaya razı olur.",
+  "seed": 4303,
+  "eksen": {
+    "islem": "gun-sonu",
+    "ariza": "host-yeniden-baslatma",
+    "an": "kesim"
+  },
+  "adimlar": [
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 444
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    },
+    {
+      "adim": "host-yeniden-baslat"
+    },
+    {
+      "adim": "gun-kapat",
+      "stan": 902
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 35000,
+    "hesap-farki": -35000,
+    "denetim": "temiz",
+    "tespit": "yok",
+    "gun-kapandi": true
+  }
+}

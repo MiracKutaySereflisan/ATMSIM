@@ -1,0 +1,42 @@
+{
+  "id": "Y-HK-ESCROW",
+  "baslik": "Onay ile hesabın işlendiği an arasında hat koptu",
+  "aciklama": "kural §4.8 (docs/proje-kurallari.md)'in tam sorusu. Müşteri onayladı, banknotlar kasete girdi, host haberi alamadı. Para artık bankanın; kuyruk boşalınca hesaba yazılmalı.",
+  "seed": 4104,
+  "eksen": {
+    "islem": "yatirma",
+    "ariza": "hat-kopmasi",
+    "an": "escrow"
+  },
+  "adimlar": [
+    {
+      "adim": "yatir-basla",
+      "kart": "4111111111111111",
+      "banknotlar": "100x5",
+      "stan": 424
+    },
+    {
+      "adim": "hat-kes"
+    },
+    {
+      "adim": "yatir-bitir",
+      "onay": true
+    },
+    {
+      "adim": "hat-gelsin"
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 50000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

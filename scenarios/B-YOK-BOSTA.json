@@ -1,0 +1,24 @@
+{
+  "id": "B-YOK-BOSTA",
+  "baslik": "Bakiye sorgusu",
+  "aciklama": "Hiçbir şey oynatmayan tek işlem. Kıyas noktası olarak burada.",
+  "seed": 4201,
+  "eksen": {
+    "islem": "bakiye",
+    "ariza": "yok",
+    "an": "bosta"
+  },
+  "adimlar": [
+    {
+      "adim": "bakiye",
+      "kart": "4111111111111111",
+      "stan": 431
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

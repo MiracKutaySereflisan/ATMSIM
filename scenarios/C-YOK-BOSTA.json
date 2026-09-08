@@ -1,0 +1,25 @@
+{
+  "id": "C-YOK-BOSTA",
+  "baslik": "Her şey yolunda giden bir çekim",
+  "aciklama": "Kıyas noktası. Bunun temiz çıkmaması, ötekilerin hiçbirinin okunamaması demektir.",
+  "seed": 4001,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "yok",
+    "an": "bosta"
+  },
+  "adimlar": [
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 401
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 35000,
+    "hesap-farki": -35000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

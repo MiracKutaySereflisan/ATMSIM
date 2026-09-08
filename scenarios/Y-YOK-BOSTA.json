@@ -1,0 +1,26 @@
+{
+  "id": "Y-YOK-BOSTA",
+  "baslik": "Her şey yolunda giden bir yatırma",
+  "aciklama": "Kıyas noktası. Beş yüz lira ara kasadan geri dönüşüm kasetine geçer ve hesaba yazılır.",
+  "seed": 4101,
+  "eksen": {
+    "islem": "yatirma",
+    "ariza": "yok",
+    "an": "bosta"
+  },
+  "adimlar": [
+    {
+      "adim": "yatir",
+      "kart": "4111111111111111",
+      "banknotlar": "100x5",
+      "onay": true,
+      "stan": 421
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 50000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

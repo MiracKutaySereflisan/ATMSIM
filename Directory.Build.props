@@ -1,0 +1,35 @@
+<!--
+  Directory.Build.props - Settings shared by every project in this repository.
+
+  Why this file exists: without it, the same four or five lines would be copied
+  into every .csproj, and the day one of them changes the copies drift apart.
+  MSBuild imports this file automatically for any project underneath this folder,
+  so a setting written here applies everywhere.
+
+  Note on TreatWarningsAsErrors: a compiler warning in this project is not noise
+  to be scrolled past. An unused variable or a possible null reference is exactly
+  the kind of thing that turns into a wrong balance later, so the build refuses
+  to produce output while one exists.
+-->
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <NeutralLanguage>en</NeutralLanguage>
+
+    <!--
+      Identity. Written once here rather than as a banner on top of every source
+      file: a per-file author tag goes stale the moment the file is touched again,
+      while these lines are stamped into every assembly the build produces and can
+      be read back out of the binary itself.
+    -->
+    <Authors>Mirac Kutay Sereflisan</Authors>
+    <Product>ATMSIM</Product>
+    <Copyright>Copyright (c) 2026 Mirac Kutay Sereflisan</Copyright>
+    <Description>ATM simulator: three transactions, injected faults, machine-checked money conservation.</Description>
+  </PropertyGroup>
+</Project>

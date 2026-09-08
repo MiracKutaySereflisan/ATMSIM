@@ -1,0 +1,14 @@
+<!--
+  Atm.Protocol.csproj - The shared language of the two machines.
+
+  Why this project exists as its own library: the terminal and the host must agree,
+  byte for byte, on what a message looks like. If each side defined its own copy of
+  the message types, the two copies would drift and the bug would only show up on
+  the wire, at the worst possible moment. One project, referenced by both sides,
+  makes disagreement impossible to compile.
+
+  It references nothing. It must stay that way: the contract may not depend on
+  either side's implementation.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+</Project>

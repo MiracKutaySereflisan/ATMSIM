@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<!--
+  index.html - the ATM screen.
+
+  What this file is: the panel a customer stands in front of. A cabinet, a screen,
+  eight keys beside the screen, a keypad, a card slot, a cash mouth and a receipt slot.
+
+  What this file is NOT: it does not decide anything. It cannot. There is no balance
+  in it, no PIN buffer, no menu tree, no rule about what a key means. It does exactly
+  two things:
+
+      1. it draws the picture the terminal sent, and
+      2. it reports what was physically touched.
+
+  Every asterisk, every label on every key, every countdown number came down the wire
+  from the terminal. If the terminal stops talking, this screen freezes, because it has
+  nothing of its own to show.
+
+  Why that matters: this file runs inside the customer's browser, where anybody can
+  open the developer tools and change it. Anything decided here would be a decision a
+  customer could edit. So nothing is decided here.
+
+  The animations move between states the terminal named - "presenting", "taken",
+  "retracted". They are not decoration: the difference between cash being HANDED OUT
+  and cash being TAKEN is one of the failure cases this whole project is about, and a
+  difference nobody can see cannot be explained on stage.
+
+  Rules this file obeys: one file, no external requests of any kind (the room may have
+  no internet), sound off, invented bank name, no corporate mark.
+-->
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ŞEREFLİŞAN BANK — ATM</title>
+<style>
+  :root {
+    --kasa: #1c2024;
+    --kasa-acik: #2a3036;
+    --kasa-kenar: #0d1013;
+    --ekran: #06281f;
+    --ekran-yazi: #7dffc4;
+    --ekran-solgun: #3d8f6d;
+    --iptal: #c0392b;
+    --duzelt: #d4a017;
+    --giris: #2e8b57;
+    --tus: #3a4148;
+    --tus-yazi: #e8eef2;
+    --para: #d8cfa8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 50% 20%, #3a4148 0%, #14171a 70%);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: var(--tus-yazi);
+    padding: 16px;
+  }
+
+  /* ---------- the cabinet ---------- */
+
+  .kasa {
+    width: 720px;
+    max-width: 100%;
+    background: linear-gradient(180deg, var(--kasa-acik), var(--kasa));
+    border: 2px solid var(--kasa-kenar);
+    border-radius: 18px;
+    box-shadow: 0 30px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
+    padding: 18px;
+  }
+
+  .alinlik {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 4px 8px 14px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+
+  .banka { font-size: 20px; letter-spacing: .18em; font-weight: 700; }
+  .banka span { color: var(--ekran-yazi); }
+
+  .hat { font-size: 11px; letter-spacing: .08em; display: flex; align-items: center; gap: 6px; }
+  .lamba { width: 9px; height: 9px; border-radius: 50%; background: #6b1f1f; }
+  .lamba.acik { background: #2ecc71; box-shadow: 0 0 8px #2ecc71; }
+
+  /* ---------- screen and the eight keys beside it ---------- */
+
+  .ekran-bloku { display: flex; align-items: stretch; gap: 8px; margin-top: 14px; }
+
+  .yan-tuslar { display: flex; flex-direction: column; justify-content: space-around; gap: 8px; width: 34px; }
+
+  .yan-tus {
+    height: 34px;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #4a5158, #333940);
+    box-shadow: 0 2px 0 #1b1f23;
+    cursor: pointer;
+    position: relative;
+  }
+  .yan-tus:active { transform: translateY(2px); box-shadow: none; }
+  .yan-tus.bos { opacity: .28; cursor: default; }
+  .yan-tus.bos:active { transform: none; box-shadow: 0 2px 0 #1b1f23; }
+  .yan-tus::after {
+    content: "";
+    position: absolute; top: 50%; width: 10px; height: 2px;
+    background: rgba(255,255,255,.35);
+  }
+  .yan-tuslar.sol .yan-tus::after { right: -10px; }
+  .yan-tuslar.sag .yan-tus::after { left: -10px; }
+
+  .ekran {
+    flex: 1;
+    background: var(--ekran);
+    border: 3px solid #0a0d0f;
+    border-radius: 6px;
+    min-height: 290px;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Courier New", monospace;
+    color: var(--ekran-yazi);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* the faint horizontal banding of a real ATM panel */
+  .ekran::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
+    pointer-events: none;
+  }
+
+  .baslik { font-size: 17px; font-weight: 700; text-align: center; margin-bottom: 10px; }
+
+  /* The body text keeps clear of the two gutters where the option labels live.
+     Without this padding a long line runs straight through "Başka işlem" and the
+     customer reads two sentences on top of each other. */
+  .satirlar { flex: 1; font-size: 15px; line-height: 1.7; white-space: pre-wrap; padding: 0 118px; }
+  .maske { letter-spacing: .35em; font-size: 26px; min-height: 32px; text-align: center; padding-bottom: 8px; }
+
+  /* option rows sit at the same heights as the keys beside them */
+  /* The option labels sit in the left and right gutters, level with the keys they
+     belong to. They are drawn over the screen rather than in the flow of the text,
+     because their vertical position is fixed by the keys - not by how much text is
+     above them. */
+  .secenekler { display: flex; flex-direction: column; justify-content: space-around; position: absolute; inset: 52px 12px 40px; pointer-events: none; }
+  .secenek-satir { display: flex; justify-content: space-between; font-size: 13px; height: 34px; align-items: center; }
+  .secenek-satir span { max-width: 108px; }
+  .secenek-satir .sol-etiket::before { content: "◀ "; color: var(--ekran-solgun); }
+  .secenek-satir .sag-etiket::after { content: " ▶"; color: var(--ekran-solgun); }
+
+  .geri-sayim { text-align: right; font-size: 12px; color: var(--ekran-solgun); }
+
+  /* ---------- slots along the bottom ---------- */
+
+  .yuvalar { display: flex; gap: 12px; margin-top: 16px; }
+  .yuva { flex: 1; background: #14181b; border: 1px solid #0a0d0f; border-radius: 8px; padding: 10px; text-align: center; position: relative; overflow: hidden; height: 92px; }
+  .yuva-ad { font-size: 10px; letter-spacing: .1em; color: #8a949c; }
+
+  .agiz { position: absolute; left: 12%; right: 12%; height: 10px; background: #05070a; border-radius: 3px; bottom: 34px; }
+
+  /* card */
+  .kart {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 62px; height: 40px; border-radius: 5px;
+    background: linear-gradient(135deg, #cdd7de, #8fa3b0);
+    bottom: 44px;
+    transition: bottom .9s ease, opacity .4s ease;
+  }
+  .kart .cip { position: absolute; left: 7px; top: 14px; width: 13px; height: 10px; background: #c9a227; border-radius: 2px; }
+  .yuva[data-durum="out"] .kart { bottom: 44px; }
+  .yuva[data-durum="reading"] .kart { bottom: 26px; }
+  .yuva[data-durum="in"] .kart,
+  .yuva[data-durum="captured"] .kart { bottom: 6px; opacity: 0; }
+  .yuva[data-durum="returned"] .kart { bottom: 50px; }
+
+  /* cash */
+  .kapak { position: absolute; left: 10%; right: 10%; bottom: 30px; height: 16px; background: #05070a; border-radius: 3px; transition: transform .5s ease; transform-origin: bottom; }
+  .yuva[data-durum="presenting"] .kapak { transform: scaleY(.15); }
+  .deste {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 96px; height: 30px; border-radius: 3px;
+    background: repeating-linear-gradient(180deg, var(--para) 0 6px, #b9ae86 6px 7px);
+    bottom: 18px; opacity: 0;
+    transition: bottom .8s ease, opacity .5s ease;
+  }
+  .yuva[data-durum="presenting"] .deste { bottom: 44px; opacity: 1; }
+  .yuva[data-durum="taken"] .deste { bottom: 84px; opacity: 0; }
+  .yuva[data-durum="retracted"] .deste { bottom: 8px; opacity: 0; }
+
+  /* receipt */
+  .makbuz {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 58px; height: 46px; background: #f2efe6; border-radius: 2px;
+    bottom: 40px; opacity: 0;
+    transition: bottom 1.1s ease, opacity .4s ease;
+  }
+  .makbuz::after { content: ""; position: absolute; inset: 6px 6px auto 6px; height: 2px; background: #b9b3a4; box-shadow: 0 6px 0 #b9b3a4, 0 12px 0 #b9b3a4, 0 18px 0 #b9b3a4; }
+  .yuva[data-durum="printing"] .makbuz { bottom: 30px; opacity: .5; }
+  .yuva[data-durum="presented"] .makbuz { bottom: 52px; opacity: 1; }
+  .yuva[data-durum="taken"] .makbuz { bottom: 92px; opacity: 0; }
+
+  /* ---------- the deposit slot ----------
+
+     A separate hole from the cash mouth, drawn with the notes moving the other way:
+     in a withdrawal the bundle rises out of the machine, here it sinks into it. The
+     "returned" state pushes it back up again, because a deposit that is not confirmed
+     comes back out of the same hole it went in - and that difference between "in the
+     machine" and "the bank's" is the whole subject of this phase. */
+  .yuva[data-durum="open"] .kapak { transform: scaleY(.15); }
+  .yuva[data-durum="counting"] .kapak { transform: scaleY(.15); }
+  .yuva[data-durum="open"] .deste { bottom: 44px; opacity: .25; }
+  .yuva[data-durum="counting"] .deste { bottom: 20px; opacity: 1; }
+  .yuva[data-durum="returned"] .deste { bottom: 46px; opacity: 1; }
+  .yuva[data-durum="swallowed"] .deste { bottom: 2px; opacity: 0; }
+
+  /* The notes in the customer's hand. Shown only while the slot is open: on a real
+     machine this is the person's own wallet, and it exists here because a simulated
+     customer needs somewhere to hold banknotes before pushing them in. */
+  .banknotlar { display: none; margin-top: 10px; background: #14181b; border: 1px solid #0a0d0f;
+                border-radius: 8px; padding: 10px; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .banknotlar[data-acik="1"] { display: flex; }
+  .banknot { font-size: 12px; padding: 5px 10px; border: 1px solid #39424a; border-radius: 4px;
+             background: #1d2226; color: #cfd8de; cursor: pointer; }
+  .banknot:hover { background: #262c31; }
+  .elde { font-size: 12px; color: #8a949c; margin-left: auto; }
+  .banknot-at { background: #1f6b34; border-color: #2c8a45; color: #eaf6ee; }
+  .banknot-geri { background: #6b5a1f; border-color: #8a742c; color: #f6f1ea; }
+
+  .yuva-tus { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); font-size: 10px; padding: 3px 8px; border: 1px solid #39424a; border-radius: 4px; background: #1d2226; color: #cfd8de; cursor: pointer; }
+
+  /* ---------- keypad ---------- */
+
+  .tus-takimi { display: flex; gap: 10px; margin-top: 16px; justify-content: center; }
+  .rakamlar { display: grid; grid-template-columns: repeat(3, 56px); gap: 8px; }
+  .komutlar { display: grid; grid-template-rows: repeat(3, 1fr); gap: 8px; width: 104px; }
+
+  .tus {
+    height: 44px; border: none; border-radius: 6px;
+    background: linear-gradient(180deg, #4a5158, var(--tus));
+    color: var(--tus-yazi); font-size: 17px; font-weight: 600;
+    box-shadow: 0 3px 0 #1b1f23; cursor: pointer;
+  }
+  .tus:active { transform: translateY(3px); box-shadow: none; }
+  .tus.iptal { background: linear-gradient(180deg, #d9503f, var(--iptal)); }
+  .tus.duzelt { background: linear-gradient(180deg, #e8b93a, var(--duzelt)); color: #2a2000; }
+  .tus.giris  { background: linear-gradient(180deg, #3aa76a, var(--giris)); }
+  .tus.komut { font-size: 12px; letter-spacing: .06em; height: 100%; }
+
+  .not { margin-top: 12px; text-align: center; font-size: 11px; color: #6f7a82; }
+
+  /* ---------- the printable receipt ----------
+     A second piece of paper, drawn beside the cabinet rather than inside the screen:
+     the screen's lines are read now and gone, the receipt is taken away and kept.
+     Its text is composed by the terminal (see TerminalFlow.Receipt) - the browser
+     lays it out and never writes a word of it. */
+  /* Fixed rather than in the flow, and that is not a detail: laid out beside the
+     cabinet it made the cabinet narrower, and the screen's own lines started wrapping
+     mid-sentence. The machine must not change shape because a receipt came out. */
+  .makbuz-kagit {
+    display: none; position: fixed; right: 24px; top: 48px;
+    width: 300px; padding: 16px 18px 20px;
+    background: #f6f3ea; color: #22201b; border-radius: 2px;
+    font-family: "SFMono-Regular", "Consolas", "Menlo", monospace;
+    font-size: 12px; line-height: 1.6; white-space: pre;
+    overflow-x: auto;
+    box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  }
+  .makbuz-kagit.acik { display: block; }
+
+  /* On a narrow screen there is no room beside the cabinet; the paper goes under it
+     instead of overlapping the machine. */
+  @media (max-width: 1180px) {
+    .makbuz-kagit { position: static; margin: 16px auto 0; }
+  }
+  .makbuz-yaz {
+    display: block; margin: 8px auto 0; font-size: 11px; padding: 4px 10px;
+    border: 1px solid #b9b3a4; border-radius: 4px; background: #e8e3d6;
+    color: #22201b; cursor: pointer;
+  }
+
+  @media print {
+    body > *:not(.makbuz-kagit) { display: none !important; }
+    .makbuz-kagit { display: block; box-shadow: none; width: auto; }
+    .makbuz-yaz { display: none; }
+  }
+
+  /* ---------- servis paneli (gizli) ----------
+     Bir ATM'nin arkasındaki servis kapağının karşılığı. Müşteri onu görmez; makineyi
+     çalıştıran kişi açar. Sunumda "şimdi hattı kesiyorum" demenin yeri burası.
+     Hiçbir düğmesi bir karar taşımaz: her biri terminale "operatör şuna bastı" der
+     ve ne olacağına terminal karar verir (KARAR-053). */
+  .servis {
+    position: fixed; right: 16px; bottom: 16px; z-index: 40;
+    background: #11161d; border: 1px solid #2a3441; border-radius: 10px;
+    padding: 12px 14px; width: 260px; color: #c7d2de;
+    font-size: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  }
+  .servis[hidden] { display: none; }
+  .servis h3 { margin: 0 0 8px; font-size: 12px; letter-spacing: .12em; color: #8fa2b6; font-weight: 600; }
+  .servis-grup { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .servis button {
+    background: #1b2430; color: #d7e2ee; border: 1px solid #2f3b49;
+    border-radius: 6px; padding: 6px 9px; font: inherit; cursor: pointer;
+  }
+  .servis button:hover { background: #24313f; }
+  .servis button.kapat { border-color: #4a5a2f; }
+  .servis .durum { color: #e8b23a; min-height: 16px; }
+  .servis .ipucu { color: #6b7c8f; margin-top: 8px; line-height: 1.5; }
+
+  /* The strip across the top of the screen while a fault is switched on. Deliberately
+     hard to miss: a demonstration machine with a fault quietly on is a machine somebody
+     will show to an audience as if it were working normally. */
+  .demo-serit {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 45;
+    background: #7a2b12; color: #ffd9c4; text-align: center;
+    padding: 5px 8px; font-size: 12px; letter-spacing: .08em;
+  }
+  .demo-serit[hidden] { display: none; }
+</style>
+</head>
+<body>
+<div class="kasa">
+
+  <div class="alinlik">
+    <div class="banka">ŞEREFLİŞAN <span>BANK</span></div>
+    <div class="hat"><span class="lamba" id="lamba"></span><span id="hat-yazi">BAĞLANIYOR</span></div>
+  </div>
+
+  <div class="ekran-bloku">
+    <div class="yan-tuslar sol">
+      <button class="yan-tus" data-soft="L1"></button>
+      <button class="yan-tus" data-soft="L2"></button>
+      <button class="yan-tus" data-soft="L3"></button>
+      <button class="yan-tus" data-soft="L4"></button>
+    </div>
+
+    <div class="ekran">
+      <div class="baslik" id="baslik">—</div>
+      <div class="satirlar" id="satirlar"></div>
+      <div class="maske" id="maske"></div>
+      <div class="secenekler" id="secenekler"></div>
+      <div class="geri-sayim" id="geri-sayim"></div>
+    </div>
+
+    <div class="yan-tuslar sag">
+      <button class="yan-tus" data-soft="R1"></button>
+      <button class="yan-tus" data-soft="R2"></button>
+      <button class="yan-tus" data-soft="R3"></button>
+      <button class="yan-tus" data-soft="R4"></button>
+    </div>
+  </div>
+
+  <div class="yuvalar">
+    <div class="yuva" id="yuva-kart" data-durum="out">
+      <div class="yuva-ad">KART</div>
+      <div class="kart"><div class="cip"></div></div>
+      <div class="agiz"></div>
+      <button class="yuva-tus" id="tus-kart">Kartı tak</button>
+    </div>
+
+    <div class="yuva" id="yuva-nakit" data-durum="closed">
+      <div class="yuva-ad">NAKİT</div>
+      <div class="deste"></div>
+      <div class="kapak"></div>
+      <button class="yuva-tus" id="tus-nakit">Parayı al</button>
+    </div>
+
+    <div class="yuva" id="yuva-yatirma" data-durum="closed">
+      <div class="yuva-ad">YATIRMA</div>
+      <div class="deste"></div>
+      <div class="kapak"></div>
+      <button class="yuva-tus" id="tus-yatirma">İade parayı al</button>
+    </div>
+
+    <div class="yuva" id="yuva-makbuz" data-durum="none">
+      <div class="yuva-ad">MAKBUZ</div>
+      <div class="makbuz"></div>
+      <div class="agiz"></div>
+      <button class="yuva-tus" id="tus-makbuz">Makbuzu al</button>
+    </div>
+  </div>
+
+  <!-- The customer's own banknotes. Nothing here decides anything: pressing a note
+       button only says which piece of paper is in the hand, and "Parayı at" reports
+       that those pieces of paper went into the slot. The machine counts them
+       (KARAR-024) - which is why no amount is ever typed on this panel. -->
+  <div class="banknotlar" id="banknotlar" data-acik="0">
+    <button class="banknot" data-lira="50">50 TL</button>
+    <button class="banknot" data-lira="100">100 TL</button>
+    <button class="banknot" data-lira="200">200 TL</button>
+    <button class="banknot banknot-geri" id="banknot-geri">Elimi boşalt</button>
+    <button class="banknot banknot-at" id="banknot-at">Parayı at</button>
+    <span class="elde" id="elde">Elinizde banknot yok</span>
+  </div>
+
+  <div class="tus-takimi">
+    <div class="rakamlar">
+      <button class="tus" data-key="1">1</button>
+      <button class="tus" data-key="2">2</button>
+      <button class="tus" data-key="3">3</button>
+      <button class="tus" data-key="4">4</button>
+      <button class="tus" data-key="5">5</button>
+      <button class="tus" data-key="6">6</button>
+      <button class="tus" data-key="7">7</button>
+      <button class="tus" data-key="8">8</button>
+      <button class="tus" data-key="9">9</button>
+      <button class="tus" data-key="0" style="grid-column: 2">0</button>
+    </div>
+    <div class="komutlar">
+      <button class="tus komut iptal" data-key="cancel">İPTAL</button>
+      <button class="tus komut duzelt" data-key="correct">DÜZELT</button>
+      <button class="tus komut giris" data-key="enter">GİRİŞ</button>
+    </div>
+  </div>
+
+  <div class="not">Klavye de çalışır: rakamlar, Enter, Backspace, Esc.</div>
+</div>
+
+
+<div class="demo-serit" id="demo-serit" hidden></div>
+
+<div class="servis" id="servis" hidden>
+  <h3>SERVİS PANELİ</h3>
+
+  <div class="servis-grup">
+    <button data-demo="hat-kes">Hattı kes</button>
+    <button data-demo="cevap-yut">Cevabı yut</button>
+    <button data-demo="hat-gelsin" class="kapat">Hat gelsin</button>
+  </div>
+
+  <div class="servis-grup">
+    <button data-demo="eksik-ver">Eksik ver</button>
+    <button data-demo="sikisma">Sıkışma</button>
+    <button data-demo="makine-duzelsin" class="kapat">Makine düzelsin</button>
+  </div>
+
+  <div class="servis-grup">
+    <button id="tam-ekran">Tam ekran</button>
+  </div>
+
+  <div class="durum" id="servis-durum"></div>
+  <div class="ipucu">
+    Ctrl+Shift+S ile açılır ve kapanır. Banka adına üç kez dokunmak da açar.<br>
+    <b>Hattı kes:</b> hiçbir mesaj gitmez. <b>Cevabı yut:</b> mesaj gider, iş yapılır,
+    cevap dönmez — makine ikisini ayırt edemez.
+  </div>
+</div>
+
+<div class="makbuz-kagit" id="makbuz-kagit">
+  <div id="makbuz-metin"></div>
+  <button class="makbuz-yaz" id="makbuz-yaz">Makbuzu yazdır</button>
+</div>
+
+<script>
+"use strict";
+
+// The screen holds no state of its own. These two variables are the exception, and
+// neither is a decision: one is the connection, the other is the last picture the
+// terminal sent, kept only so a countdown can tick without asking again.
+let hat = null;
+let sonGorunum = null;
+
+const el = (id) => document.getElementById(id);
+
+// ---------- connection ----------
+
+function bagla() {
+  // Same host and port the page itself came from. The page is served by the terminal,
+  // so this is the terminal. Opening the file directly from disk would leave this
+  // pointing nowhere - which is why docs/ortam.md says the screen is opened from the
+  // address the terminal serves.
+  const adres = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws";
+  hat = new WebSocket(adres);
+
+  hat.onopen = () => {
+    lambaYaz(true, "BAĞLI");
+    gonder("hello", "");
+  };
+
+  hat.onmessage = (olay) => {
+    let gorunum;
+    try {
+      gorunum = JSON.parse(olay.data);
+    } catch (e) {
+      // A message we cannot read means the two sides no longer agree. Showing the
+      // previous picture would be showing something that is no longer true.
+      return;
+    }
+    ciz(gorunum);
+  };
+
+  hat.onclose = () => {
+    lambaYaz(false, "HAT YOK");
+    // The screen does not decide that the machine is out of service - it only says
+    // the line is gone. Reconnecting is worth trying, quietly.
+    setTimeout(bagla, 1500);
+  };
+
+  hat.onerror = () => lambaYaz(false, "HAT YOK");
+}
+
+function lambaYaz(acik, yazi) {
+  el("lamba").classList.toggle("acik", acik);
+  el("hat-yazi").textContent = yazi;
+}
+
+function gonder(olay, deger) {
+  if (hat && hat.readyState === WebSocket.OPEN) {
+    hat.send(JSON.stringify({ event: olay, value: String(deger) }));
+  }
+}
+
+// ---------- drawing ----------
+
+function ciz(g) {
+  sonGorunum = g;
+
+  el("baslik").textContent = g.title || "";
+  el("satirlar").textContent = (g.lines || []).join("\n");
+
+  // The asterisks are counted by the terminal. This line draws the number it was
+  // given; it does not count anything and never sees a digit.
+  el("maske").textContent = "*".repeat(g.maskedLength || 0);
+
+  el("geri-sayim").textContent =
+    (g.countdownSeconds === null || g.countdownSeconds === undefined)
+      ? "" : g.countdownSeconds + " sn";
+
+  cizSecenekler(g.softLeft || [], g.softRight || []);
+
+  el("yuva-kart").dataset.durum = g.card || "out";
+  el("yuva-nakit").dataset.durum = g.cashPort || "closed";
+  el("yuva-makbuz").dataset.durum = g.receipt || "none";
+
+  const yatirma = g.depositPort || "closed";
+  el("yuva-yatirma").dataset.durum = yatirma;
+
+  // The hand is offered only while the slot is open. It disappears the moment the
+  // notes are counted, because after that the answer is a key beside the screen.
+  el("banknotlar").dataset.acik = (yatirma === "open") ? "1" : "0";
+
+  if (yatirma !== "open") { elde = {}; eldeYaz(); }
+
+  el("tus-kart").style.visibility = (g.card === "out" || g.card === "returned") ? "visible" : "hidden";
+  el("tus-nakit").style.visibility = (g.cashPort === "presenting") ? "visible" : "hidden";
+  el("tus-makbuz").style.visibility = (g.receipt === "presented") ? "visible" : "hidden";
+  el("tus-yatirma").style.visibility = (yatirma === "returned") ? "visible" : "hidden";
+
+  // The receipt. Every word of it was composed by the terminal; this draws the lines
+  // it was given, in order, and adds nothing. A browser that could write its own
+  // receipt could write any amount on one.
+  // Whatever the terminal says is switched on. Never what this page remembers pressing -
+  // the machine is the one that knows, and a screen that kept its own copy could show a
+  // fault as off while the machine still had it on.
+  const arizalar = g.demo || "";
+  el("demo-serit").hidden = (arizalar === "");
+  el("demo-serit").textContent = arizalar === "" ? "" : "DEMO ARIZASI AÇIK — " + arizalar;
+  el("servis-durum").textContent = arizalar === "" ? "Bütün arızalar kapalı." : arizalar;
+
+  const kagit = el("makbuz-kagit");
+  const satirlar = g.receiptLines || [];
+  kagit.classList.toggle("acik", satirlar.length > 0);
+  el("makbuz-metin").textContent = satirlar.join("\n");
+}
+
+function cizSecenekler(sol, sag) {
+  const kap = el("secenekler");
+  kap.innerHTML = "";
+
+  for (let i = 0; i < 4; i++) {
+    const satir = document.createElement("div");
+    satir.className = "secenek-satir";
+
+    const s = document.createElement("span");
+    s.className = "sol-etiket";
+    if (sol[i]) { s.textContent = sol[i]; } else { s.style.visibility = "hidden"; }
+
+    const d = document.createElement("span");
+    d.className = "sag-etiket";
+    if (sag[i]) { d.textContent = sag[i]; } else { d.style.visibility = "hidden"; }
+
+    satir.appendChild(s);
+    satir.appendChild(d);
+    kap.appendChild(satir);
+  }
+
+  document.querySelectorAll(".yan-tus").forEach((tus) => {
+    const yer = tus.dataset.soft;
+    const dizi = yer[0] === "L" ? sol : sag;
+    const dolu = Boolean(dizi[Number(yer[1]) - 1]);
+    tus.classList.toggle("bos", !dolu);
+  });
+}
+
+
+// ---------- the service panel ----------
+//
+// The back of the machine, in a demonstration. Nothing here decides anything: every
+// button sends one word to the terminal, which owns what that word means (KARAR-053).
+// The panel does not remember what it pressed either - the state it shows comes back
+// from the terminal on every picture, so a fault cannot be on in the machine and off on
+// the screen.
+
+function servisAcKapa(ac) {
+  const panel = el("servis");
+  panel.hidden = (ac === undefined) ? !panel.hidden : !ac;
+}
+
+document.querySelectorAll("[data-demo]").forEach((tus) => {
+  tus.addEventListener("click", () => gonder("demo", tus.dataset.demo));
+});
+
+el("tam-ekran").addEventListener("click", () => {
+  // Full screen is what makes the page stop looking like a page (rule 7 (docs/proje-kurallari.md)).
+  // Wrapped because a browser may refuse it, and a refused promise here must not take
+  // the rest of the screen down with it.
+  const kok = document.documentElement;
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(() => {});
+  } else if (kok.requestFullscreen) {
+    kok.requestFullscreen().catch(() => {});
+  }
+});
+
+// Two ways in, because a demonstration may be driven by a keyboard or by a finger.
+document.addEventListener("keydown", (olay) => {
+  if (olay.ctrlKey && olay.shiftKey && (olay.key === "S" || olay.key === "s")) {
+    olay.preventDefault();
+    servisAcKapa();
+  }
+});
+
+(() => {
+  let dokunus = 0;
+  let zaman = 0;
+
+  const banka = document.querySelector(".banka");
+  if (!banka) { return; }
+
+  banka.addEventListener("click", () => {
+    const simdi = Date.now();
+    dokunus = (simdi - zaman < 700) ? dokunus + 1 : 1;
+    zaman = simdi;
+    if (dokunus >= 3) { dokunus = 0; servisAcKapa(); }
+  });
+})();
+
+// ---------- what was touched ----------
+
+document.querySelectorAll("[data-key]").forEach((tus) => {
+  tus.addEventListener("click", () => gonder("key", tus.dataset.key));
+});
+
+document.querySelectorAll("[data-soft]").forEach((tus) => {
+  tus.addEventListener("click", () => {
+    // A blank key beside the screen is still a key that can be pressed on a real
+    // machine, but reporting it would be reporting a press with no meaning. The
+    // terminal decides what a key means; here we simply do not raise the ones it
+    // gave no label to.
+    if (!tus.classList.contains("bos")) {
+      gonder("soft", tus.dataset.soft);
+    }
+  });
+});
+
+el("tus-kart").addEventListener("click", () => {
+  const durum = el("yuva-kart").dataset.durum;
+  gonder("card", durum === "returned" ? "taken" : "inserted");
+});
+
+el("tus-nakit").addEventListener("click", () => gonder("cash", "taken"));
+
+// ---------- the customer's hand ----------
+//
+// A dictionary of denomination -> how many. It is emptied whenever the slot is not
+// open, so notes cannot be carried from one customer's session into the next.
+let elde = {};
+
+function eldeYaz() {
+  const parcalar = Object.keys(elde)
+    .sort((a, b) => b - a)
+    .map((lira) => lira + " TL x " + elde[lira]);
+
+  el("elde").textContent = parcalar.length === 0
+    ? "Elinizde banknot yok"
+    : "Elinizde: " + parcalar.join(", ");
+}
+
+document.querySelectorAll(".banknot[data-lira]").forEach((tus) => {
+  tus.addEventListener("click", () => {
+    const lira = tus.dataset.lira;
+    elde[lira] = (elde[lira] || 0) + 1;
+    eldeYaz();
+  });
+});
+
+el("banknot-geri").addEventListener("click", () => { elde = {}; eldeYaz(); });
+
+el("banknot-at").addEventListener("click", () => {
+  const liste = Object.keys(elde).map((lira) => lira + "x" + elde[lira]).join(",");
+
+  // An empty hand is not an event. Reporting "I pushed nothing in" would make the
+  // machine count nothing and end a deposit that never started.
+  if (liste === "") { return; }
+
+  elde = {};
+  eldeYaz();
+  gonder("notes", liste);
+});
+
+// Taking the returned notes back out of the deposit slot. It reports nothing to the
+// terminal: by the time notes are in this slot the transaction is already over, and a
+// hand that does or does not collect them changes no account. The button exists so the
+// picture on the screen matches the picture in front of the customer.
+el("tus-yatirma").addEventListener("click", () => {
+  el("yuva-yatirma").dataset.durum = "closed";
+});
+el("makbuz-yaz").addEventListener("click", () => window.print());
+el("tus-makbuz").addEventListener("click", () => gonder("receipt", "taken"));
+
+document.addEventListener("keydown", (e) => {
+  if (e.key >= "0" && e.key <= "9") { gonder("key", e.key); }
+  else if (e.key === "Enter") { gonder("key", "enter"); }
+  else if (e.key === "Backspace") { e.preventDefault(); gonder("key", "correct"); }
+  else if (e.key === "Escape") { gonder("key", "cancel"); }
+});
+
+// The countdown ticks locally so the number moves once a second without a message
+// per second. It is a display of the terminal's number, not a timer that decides
+// anything: when it reaches zero this screen does nothing at all. The terminal is
+// the one holding the real clock, and the terminal is what will act.
+setInterval(() => {
+  // A second went by. This is reported as a fact, not acted on: the terminal holds the
+  // real clock and decides whether the wait is over (KARAR-036). Without this message a
+  // customer who walked away would leave the machine waiting for ever, cash and all.
+  gonder("tick", "");
+
+  if (!sonGorunum || sonGorunum.countdownSeconds === null || sonGorunum.countdownSeconds === undefined) return;
+  if (sonGorunum.countdownSeconds > 0) {
+    sonGorunum.countdownSeconds -= 1;
+    el("geri-sayim").textContent = sonGorunum.countdownSeconds + " sn";
+  }
+}, 1000);
+
+bagla();
+</script>
+</body>
+</html>

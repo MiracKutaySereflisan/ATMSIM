@@ -1,0 +1,45 @@
+{
+  "id": "C-HK-TERSKAYIT",
+  "baslik": "Ters kayıt da kayboluyor",
+  "aciklama": "kural §4.2 (docs/proje-kurallari.md): gönderildi diye ulaştı sayılmaz. Hat, ters kayıt gönderilirken de kopuk; onay gelene kadar tekrar denenmeli.",
+  "seed": 4012,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "hat-kopmasi",
+    "an": "ters-kayit"
+  },
+  "adimlar": [
+    {
+      "adim": "hat-kes"
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 412
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    },
+    {
+      "adim": "hat-gelsin"
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 600
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

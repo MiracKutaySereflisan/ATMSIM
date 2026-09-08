@@ -1,0 +1,22 @@
+<!--
+  Atm.Terminal.csproj - The machine side: screen flow, cassettes, dispenser, journal.
+
+  Console application: it is started once, connects to the host over a persistent TCP
+  socket, and serves the browser screen over WebSocket.
+
+  wwwroot/ holds the ATM screen (a single HTML file). It is copied next to the built
+  program so the terminal can serve it from disk without the file being embedded in
+  the executable - during the demo we want to be able to look at that file and see
+  the same thing the browser sees.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Atm.Protocol/Atm.Protocol.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wwwroot/**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

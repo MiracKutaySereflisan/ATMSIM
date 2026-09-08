@@ -1,0 +1,27 @@
+<!--
+  Atm.Tests.csproj - Every automated test in the project, in one place.
+
+  One test project rather than one per production project: the interesting tests in
+  this repository are the ones that watch the terminal and the host disagree, so they
+  need to see both sides at once. Splitting them would force that kind of test into
+  an artificial home.
+
+  OutputType is Exe, not a library, because this project carries its own test runner
+  (TestKit/). It has NO external package references at all - see KARARLAR.md KARAR-006
+  for why, and for the three lines that would bring xUnit back if the build feed ever
+  becomes reachable.
+
+  Run it with: ./scripts/test.sh
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Atm.Protocol/Atm.Protocol.csproj" />
+    <ProjectReference Include="../../src/Atm.Host/Atm.Host.csproj" />
+    <ProjectReference Include="../../src/Atm.Terminal/Atm.Terminal.csproj" />
+    <ProjectReference Include="../../src/Atm.Audit/Atm.Audit.csproj" />
+  </ItemGroup>
+</Project>

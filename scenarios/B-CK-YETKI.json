@@ -1,0 +1,31 @@
+{
+  "id": "B-CK-YETKI",
+  "baslik": "Bakiye sorgusunun cevabı gelmedi",
+  "aciklama": "Zaman aşımının zararsız hâli: borçlanma yok, dolayısıyla ters kayıt da gerekmiyor. Bunun burada olması, ötekilerin neden zararlı olduğunu gösteriyor.",
+  "seed": 4202,
+  "eksen": {
+    "islem": "bakiye",
+    "ariza": "cevap-kaybi",
+    "an": "yetkilendirme"
+  },
+  "adimlar": [
+    {
+      "adim": "cevaplari-yut",
+      "mesaj": "BalanceRequest"
+    },
+    {
+      "adim": "bakiye",
+      "kart": "4111111111111111",
+      "stan": 432
+    },
+    {
+      "adim": "hat-gelsin"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

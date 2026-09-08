@@ -1,0 +1,52 @@
+{
+  "id": "C-CI-YETKI",
+  "baslik": "Aynı işlem kimliği ikinci kez yetkilendirme istiyor",
+  "aciklama": "Birinci istek cevapsız kaldı ve ters kayıtla kapatıldı. Aynı kimlik ikinci kez gelirse ne olmalı? Kapatılmış bir yetkilendirme yeniden onaylanamaz: para çıkarsa karşılığında ayakta duran bir yetkilendirme kalmaz. STAN sayacının başa dönmesi bunu gerçek kılar.",
+  "seed": 4010,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "cift-istek",
+    "an": "yetkilendirme"
+  },
+  "adimlar": [
+    {
+      "adim": "cevaplari-yut",
+      "mesaj": "WithdrawalAuthRequest"
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 410
+    },
+    {
+      "adim": "hat-gelsin"
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 410
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

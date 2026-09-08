@@ -1,0 +1,34 @@
+{
+  "id": "G-CK-KESIM",
+  "baslik": "Kesim isteğinin cevabı gelmedi",
+  "aciklama": "Sessizlik burada da onay değildir: gün kapanmaz, terminal tarihini değiştirmez, hat gelince tekrar denenir.",
+  "seed": 4302,
+  "eksen": {
+    "islem": "gun-sonu",
+    "ariza": "cevap-kaybi",
+    "an": "kesim"
+  },
+  "adimlar": [
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 443
+    },
+    {
+      "adim": "cevaplari-yut",
+      "mesaj": "CutoverRequest"
+    },
+    {
+      "adim": "gun-kapat",
+      "stan": 901
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 35000,
+    "hesap-farki": -35000,
+    "denetim": "temiz",
+    "tespit": "yok",
+    "gun-kapandi": false
+  }
+}

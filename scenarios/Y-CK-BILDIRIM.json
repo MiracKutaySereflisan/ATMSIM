@@ -1,0 +1,40 @@
+{
+  "id": "Y-CK-BILDIRIM",
+  "baslik": "Para kasete girdi, kesinleştirmenin cevabı kayboldu",
+  "aciklama": "KARAR-040: burada tekrar edilen şey commit'tir, ters kayıt değil. Banknot çekmecede; geri alınamaz, dolayısıyla iade edilecek bir şey yok — söylenmesi gereken bir şey var.",
+  "seed": 4103,
+  "eksen": {
+    "islem": "yatirma",
+    "ariza": "cevap-kaybi",
+    "an": "bildirim"
+  },
+  "adimlar": [
+    {
+      "adim": "cevaplari-yut",
+      "mesaj": "DepositCommitAdvice"
+    },
+    {
+      "adim": "yatir",
+      "kart": "4111111111111111",
+      "banknotlar": "100x5",
+      "onay": true,
+      "stan": 423
+    },
+    {
+      "adim": "hat-gelsin"
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 50000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

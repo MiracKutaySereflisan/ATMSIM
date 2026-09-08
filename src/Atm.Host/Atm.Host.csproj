@@ -1,0 +1,16 @@
+<!--
+  Atm.Host.csproj - The bank side: accounts, PIN verification, authorization, ledger.
+
+  This is a console application because it is a long-running server process, started
+  once and left listening on a TCP port. It references only Atm.Protocol - the host
+  must never depend on the terminal, otherwise the "two separate machines" claim
+  would be a lie the compiler could not catch.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Atm.Protocol/Atm.Protocol.csproj" />
+  </ItemGroup>
+</Project>

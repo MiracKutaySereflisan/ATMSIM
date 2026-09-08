@@ -1,0 +1,42 @@
+{
+  "id": "C-HYB-BILDIRIM",
+  "baslik": "Bildirim yoldayken host yeniden başladı",
+  "aciklama": "Faz 3f'in karşılığı: host, verdiği sözü defterinden geri kurabiliyor mu? Kuramazsa geciken bildirim 'böyle bir yetkilendirme yok' diye reddedilir ve para öksüz kalır.",
+  "seed": 4011,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "host-yeniden-baslatma",
+    "an": "bildirim"
+  },
+  "adimlar": [
+    {
+      "adim": "istekleri-yut",
+      "mesaj": "DispenseAdvice"
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 411
+    },
+    {
+      "adim": "host-yeniden-baslat"
+    },
+    {
+      "adim": "hat-gelsin"
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 35000,
+    "hesap-farki": -35000,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

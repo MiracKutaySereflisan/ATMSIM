@@ -1,0 +1,31 @@
+{
+  "id": "B-IK-YETKI",
+  "baslik": "Bakiye sorgusu hosta hiç ulaşmadı",
+  "aciklama": "Hiçbir şey oynamaz. Bu senaryonun değeri, zararsız bir zaman aşımının nasıl göründüğünü göstermesidir.",
+  "seed": 4203,
+  "eksen": {
+    "islem": "bakiye",
+    "ariza": "istek-kaybi",
+    "an": "yetkilendirme"
+  },
+  "adimlar": [
+    {
+      "adim": "istekleri-yut",
+      "mesaj": "BalanceRequest"
+    },
+    {
+      "adim": "bakiye",
+      "kart": "4111111111111111",
+      "stan": 433
+    },
+    {
+      "adim": "hat-gelsin"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}

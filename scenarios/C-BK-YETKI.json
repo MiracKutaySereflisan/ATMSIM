@@ -1,0 +1,47 @@
+{
+  "id": "C-BK-YETKI",
+  "baslik": "Kupür kısıtı: makine bu tutarı kuramıyor",
+  "aciklama": "kural §4.6 (docs/proje-kurallari.md): kupür kısıtı yetkilendirmeden ÖNCE bakılır. Sonradan fark etmek, iptal edilecek bir borçlanma üretirdi. Makinede yalnızca 20'likler var; 350 lira kurulamaz.",
+  "seed": 4008,
+  "eksen": {
+    "islem": "cekim",
+    "ariza": "bos-kaset",
+    "an": "yetkilendirme"
+  },
+  "adimlar": [
+    {
+      "adim": "kaset-ayarla",
+      "kupur": 20000,
+      "adet": 0
+    },
+    {
+      "adim": "kaset-ayarla",
+      "kupur": 10000,
+      "adet": 0
+    },
+    {
+      "adim": "kaset-ayarla",
+      "kupur": 5000,
+      "adet": 0
+    },
+    {
+      "adim": "cek",
+      "kart": "4111111111111111",
+      "tutar": 35000,
+      "stan": 408
+    },
+    {
+      "adim": "zaman-gecir",
+      "saniye": 300
+    },
+    {
+      "adim": "kuyrugu-bosalt"
+    }
+  ],
+  "beklenen": {
+    "musteriye-giden": 0,
+    "hesap-farki": 0,
+    "denetim": "temiz",
+    "tespit": "yok"
+  }
+}
