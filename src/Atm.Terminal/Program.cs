@@ -41,7 +41,7 @@ using var client = new TerminalClient(() => link.Connect(), clock);
 // in. A real ATM in this position shows "temporarily out of service" and keeps trying;
 // it does not fall over.
 //
-// Found by rehearsing the demo (Faz 5a): with no host listening, this line threw and the
+// Found by rehearsing the demo: with no host listening, this line threw and the
 // terminal died with a stack trace where a sentence belonged.
 try
 {

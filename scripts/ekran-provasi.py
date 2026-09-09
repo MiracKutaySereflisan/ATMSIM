@@ -3,14 +3,14 @@
 # ekran-provasi.py - Uçtan uca prova: iki süreci başlatır, tarayıcının yerine geçer,
 # ve demo arıza anahtarlarının uçtan uca çalıştığını gösterir.
 #
-# Neden var: kural §7 demo yolunun "provası yapılır" diyor, §16.6 provanın yapılmış
-# olmasını bitmiş sayılma koşulları arasına koyuyor. Elle yapılan bir prova, bir sonraki
+# Neden var: demo yolunun provası da yapılmalı ve bu prova bitmiş sayılma koşullarından
+# biridir. Elle yapılan bir prova, bir sonraki
 # değişiklikten sonra tekrarlanmaz; koşulabilir bir prova tekrarlanır.
 #
 # Ne kapsıyor: gerçek host süreci, gerçek terminal süreci, gerçek TCP soketi, gerçek
 # WebSocket el sıkışması ve çerçevelemesi, gerçek ekran sözleşmesi, servis paneli.
 # Yani tarayıcı dışındaki her şey. Tarayıcının kendi çizimi (animasyonlar, tam ekran)
-# bir insanın bakmasını gerektiriyor ve Faz 5d'de yapılır.
+# bir insanın bakmasını gerektiriyor ve elle denetlenir.
 #
 # Neden Python: tek dosya, ek bağımlılık istemiyor. python3 kurulu olmayan bir makinede
 # çalışmaz - o yüzden bu prova bir kapı değil, bir araçtır;

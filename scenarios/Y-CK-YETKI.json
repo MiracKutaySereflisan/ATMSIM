@@ -1,7 +1,7 @@
 {
   "id": "Y-CK-YETKI",
   "baslik": "Yatırma yetkilendirmesinin cevabı gelmedi",
-  "aciklama": "kural §4.7: para hâlâ ara kasada, yani hâlâ müşterinin. Doğru davranış iade etmektir — çekimdeki zaman aşımının tam tersi yön, çünkü paranın sahibi başka.",
+  "aciklama": "para hâlâ ara kasada, yani hâlâ müşterinin. Doğru davranış iade etmektir — çekimdeki zaman aşımının tam tersi yön, çünkü paranın sahibi başka.",
   "seed": 4102,
   "eksen": {
     "islem": "yatirma",

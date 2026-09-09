@@ -1,7 +1,7 @@
 {
   "id": "Y-HK-ESCROW",
   "baslik": "Onay ile hesabın işlendiği an arasında hat koptu",
-  "aciklama": "kural §4.8'in tam sorusu. Müşteri onayladı, banknotlar kasete girdi, host haberi alamadı. Para artık bankanın; kuyruk boşalınca hesaba yazılmalı.",
+  "aciklama": "Bu kuralın tam sorusu. Müşteri onayladı, banknotlar kasete girdi, host haberi alamadı. Para artık bankanın; kuyruk boşalınca hesaba yazılmalı.",
   "seed": 4104,
   "eksen": {
     "islem": "yatirma",

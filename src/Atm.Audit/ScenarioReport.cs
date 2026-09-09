@@ -130,7 +130,7 @@ public static class ScenarioReport
             "tek bir sayıya");
         lines.Add(
             "  indirmek, aynı parayı birden fazla kontrolün adlandırdığı durumlarda " +
-            "yanıltır (kural §9).");
+            "yanıltır.");
 
         return string.Join(Environment.NewLine, lines);
     }

@@ -1,7 +1,7 @@
 {
   "id": "C-AP-DAGITIM",
   "baslik": "Para ağza geldi, müşteri almadı, makine geri çekti",
-  "aciklama": "kural §4.4: verilmek ile alınmak farklıdır. Geri alınan para ne müşteridedir ne kasettedir — üçüncü bir kovadadır, ve hiçbir hesaptan düşülmemelidir.",
+  "aciklama": "verilmek ile alınmak farklıdır. Geri alınan para ne müşteridedir ne kasettedir — üçüncü bir kovadadır, ve hiçbir hesaptan düşülmemelidir.",
   "seed": 4007,
   "eksen": {
     "islem": "cekim",

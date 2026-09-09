@@ -1,7 +1,7 @@
 {
   "id": "C-CK-YETKI",
   "baslik": "Yetkilendirme cevabı kayboldu — host parayı bloke etmiş olabilir",
-  "aciklama": "Alanın bir numaralı hata kaynağı (kural §4.1). Cevap gelmemesi ret değildir: host isteği duymuş ve blokeyi koymuş olabilir. Doğru davranış ters kayıt üretmektir.",
+  "aciklama": "Alanın bir numaralı hata kaynağı . Cevap gelmemesi ret değildir: host isteği duymuş ve blokeyi koymuş olabilir. Doğru davranış ters kayıt üretmektir.",
   "seed": 4002,
   "eksen": {
     "islem": "cekim",

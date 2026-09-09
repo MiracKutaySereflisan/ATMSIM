@@ -1,7 +1,7 @@
 {
   "id": "C-HYB-BILDIRIM",
   "baslik": "Bildirim yoldayken host yeniden başladı",
-  "aciklama": "Faz 3f'in karşılığı: host, verdiği sözü defterinden geri kurabiliyor mu? Kuramazsa geciken bildirim 'böyle bir yetkilendirme yok' diye reddedilir ve para öksüz kalır.",
+  "aciklama": "host, verdiği sözü defterinden geri kurabiliyor mu? Kuramazsa geciken bildirim 'böyle bir yetkilendirme yok' diye reddedilir ve para öksüz kalır.",
   "seed": 4011,
   "eksen": {
     "islem": "cekim",
