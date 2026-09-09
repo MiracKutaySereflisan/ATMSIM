@@ -5,7 +5,7 @@
 // is PersistenceTests, and it is about the queue. This file is about the bank side: the
 // balances, the promises that were never closed, and the days that were already settled.
 //
-// Why it matters more than it sounds: before Phase 3f the host's accounts lived only in
+// Why it matters more than it sounds: before stage 3f the host's accounts lived only in
 // memory. A restart handed every customer their morning balance back - that is, it printed
 // money, once per restart, silently, and a demonstration would have looked perfect. The
 // promises were worse: the hold stayed in nobody's memory at all, so a machine coming back

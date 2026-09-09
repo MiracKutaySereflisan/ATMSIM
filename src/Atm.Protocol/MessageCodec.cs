@@ -11,7 +11,7 @@
 //
 // Why System.Text.Json: it ships with .NET. This repository has no external packages
 // (KARAR-006), and JSON was chosen over a binary format for readability, with the cost
-// recorded in reports/assumptions.md as V-01.
+// recorded in the assumptions list as V-01.
 //
 // Careful: Decode does NOT accept a version it does not speak. A message from a
 // different protocol version is refused loudly rather than parsed hopefully - a field

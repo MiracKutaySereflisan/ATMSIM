@@ -21,7 +21,7 @@
 // the transaction did not happen - because it does not know. The host may have done
 // the work and lost the answer on the way back. Instruction section 4.1 calls
 // treating that as "it did not happen" the number one mistake in this field. What
-// happens next is the caller's decision, and from Phase 2 onwards that decision is
+// happens next is the caller's decision, and from stage 2 onwards that decision is
 // usually to produce a reversal.
 //
 // Liveness is a separate matter from any transaction. A socket that looks open

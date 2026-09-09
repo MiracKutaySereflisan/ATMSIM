@@ -12,7 +12,7 @@
 // dialects are not.
 //
 // Careful: when the contract changes, three things change together in one commit -
-// the protocol spec, this constant, and the book chapter that explains it.
+// the protocol spec and this constant.
 
 namespace Atm.Protocol;
 

@@ -14,7 +14,7 @@
 //
 // Both the record and the accounts go to files rather than to memory (KARAR-013,
 // KARAR-047), so that a host which is stopped and started again knows both what it
-// answered and what everybody's balance is. Before Phase 3f the balances did not survive
+// answered and what everybody's balance is. Before stage 3f the balances did not survive
 // a restart, which meant a restart handed every customer their morning balance back -
 // silently, and looking perfect on screen.
 //
@@ -75,7 +75,7 @@ catch (System.Net.Sockets.SocketException ex) when (ex.SocketErrorCode == System
     // opposite treatment. A violated invariant must fail loudly with everything it knows,
     // because somebody has to debug it (rule 6b). "Somebody else is already on
     // this port" needs no debugging - it needs one sentence and a way out. Printing a stack
-    // trace here would mean a wall of English exception text in front of an audience for a
+    // trace here would mean a wall of English exception text in front of a user for a
     // problem whose whole answer fits on two lines.
     Console.Error.WriteLine($"Port {port} zaten kullaniliyor - host baslatilamadi.");
     Console.Error.WriteLine("Muhtemelen onceki bir calistirmadan kalmis. Su komut temizler:");

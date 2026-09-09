@@ -6,7 +6,7 @@
 // repeated request answered once and repeated rather than performed twice.
 //
 // The test to read first is TheSameRequestTwiceIsPerformedOnce. Nothing the host does
-// today moves money, so it costs nothing today; in Phase 2 the same rule is what
+// today moves money, so it costs nothing today; in stage 2 the same rule is what
 // stands between a lost answer and a customer debited twice for one withdrawal.
 
 using Atm.Host;

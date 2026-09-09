@@ -5,7 +5,7 @@
 // switched on. Nothing else. It does not cause a fault, it does not know what a socket is,
 // and it makes no decision about a transaction.
 //
-// Why it exists: rule 7 asks for a demonstration in which the presenter can
+// Why it exists: the demo needs a mode in which the operator can
 // say "now I am cutting the line" and cut it. Without that, a live demo can only show the
 // happy path - and a simulator that only shows the happy path is a demo, not a finding.
 //
@@ -41,7 +41,7 @@ public sealed class DemoFaults
     /// The request reaches the host and does its work; the answer is thrown away.
     /// </summary>
     /// <remarks>
-    /// The dangerous one, and the one worth showing to an audience: this is instruction
+    /// The dangerous one, and the one worth showing to a user: this is instruction
     /// section 4.1 in the flesh. The machine cannot tell it apart from a line that was
     /// never there, and the money may already be held.
     /// </remarks>
@@ -87,7 +87,7 @@ public sealed class DemoFaults
     /// <remarks>
     /// The refusal is deliberate and matches the scenario reader (KARAR-049): a mistyped
     /// command that was quietly ignored would leave the presenter saying "now I am cutting
-    /// the line" to an audience watching a line that is still up.
+    /// the line" to a user watching a line that is still up.
     /// </remarks>
     public void Apply(string command)
     {

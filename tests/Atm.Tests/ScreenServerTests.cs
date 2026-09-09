@@ -174,13 +174,13 @@ public class ScreenServerTests
     [Fact]
     public void AnOperatorSwitchTravelsOverTheRealSocketAndComesBackOnThePicture()
     {
-        // The rehearsal, in one test. Everything on the way is the real thing: a real
+        // The end-to-end path, in one test. Everything on the way is the real thing: a real
         // socket, the real handshake, the real framing, the real codec's list of allowed
         // events, the real flow, the real panel.
         //
-        // It is here because rehearsing the demo by hand found a bug this test would have
+        // It is here because running the demo by hand found a bug this test would have
         // caught: the codec's allow-list did not know about "demo", so the very first press
-        // of the service panel closed the connection - in front of an audience, silently
+        // of the service panel closed the connection - in front of a user, silently
         // and permanently. A vocabulary added on one side and not the other is invisible
         // until somebody uses the word.
         var demo = new DemoFaults();

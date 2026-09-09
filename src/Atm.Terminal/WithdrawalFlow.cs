@@ -23,7 +23,7 @@
 // every one of them is answered by writing something down rather than by assuming.
 //
 // What this file does NOT do: draw anything. It returns what happened; the screen flow
-// turns that into a picture (Phase 2h). A withdrawal that could only be run by pressing
+// turns that into a picture (stage 2h). A withdrawal that could only be run by pressing
 // buttons could not be run a thousand times in a scenario file.
 
 using Atm.Protocol;

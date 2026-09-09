@@ -16,7 +16,7 @@
 //   AReversalForAWithdrawalAlreadyPaidIsAcknowledgedAndCountedAsAContradiction - the
 //   customer has the cash and the machine is asking for it back. The host cannot un-hand
 //   a banknote. It acknowledges, undoes nothing, and writes the contradiction down where
-//   Phase 4 will count it.
+//   stage 4 will count it.
 
 using Atm.Host;
 using Atm.Protocol;
@@ -185,7 +185,7 @@ public class ReversalTests
 
         Assert.Equal(ResponseCode.InvalidTransaction, advice.Rc);
         // The ledger did not move twice, and it did not move at all: this is a cash
-        // difference that only the end-of-day count can find, and Phase 4 will name it.
+        // difference that only the end-of-day count can find, and stage 4 will name it.
         Assert.Equal(250_000, Balance(host, clock, 300).Ledger);
     }
 

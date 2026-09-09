@@ -12,7 +12,7 @@
 // why the fake implements both and there is only ever one CashPosition.
 //
 // The three calls are three separate moments on purpose, and the order between them is the
-// decision the whole of Phase 3 rests on (KARAR-038):
+// decision the whole of stage 3 rests on (KARAR-038):
 //
 //   AcceptIntoEscrow - the notes are in the machine and still the CUSTOMER'S.
 //   Stack            - the notes go into the recycler drawers. From here they are the
@@ -79,7 +79,7 @@ public interface ICashAcceptor
 /// </summary>
 /// <remarks>
 /// Like DispenserFault, this is not a test helper that leaked into production code: fault
-/// injection is what this project is for, and Phase 4 drives these settings from
+/// injection is what this project is for, and stage 4 drives these settings from
 /// scenarios/*.json rather than from C#.
 /// </remarks>
 public sealed record AcceptorFault

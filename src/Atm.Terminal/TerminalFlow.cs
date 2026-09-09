@@ -16,7 +16,7 @@
 // test they are functions written in the test itself. That is why "the host did not
 // answer" is a line of test code here rather than something to wait for.
 //
-// The rule that matters most in this phase, and it is the rule Phase 2 will break:
+// The rule that matters most in this phase, and it is the rule stage 2 will break:
 // a balance enquiry MOVES NO MONEY. It reads. So when the host does not answer one,
 // the terminal may simply say so and return the card. Nothing needs undoing, because
 // nothing was done. The moment a withdrawal exists that stops being true - an
@@ -110,7 +110,7 @@ public sealed class TerminalFlow
     /// <param name="withdrawals">
     /// The withdrawal flow this screen drives. When it is left out the menu does not offer
     /// withdrawal at all - deliberately, because a menu key that leads nowhere is a
-    /// machine lying about what it can do. The balance-enquiry tests of Phase 1 leave it
+    /// machine lying about what it can do. The balance-enquiry tests of stage 1 leave it
     /// out and still describe a complete, honest machine.
     /// </param>
     /// <param name="deposits">
@@ -517,7 +517,7 @@ public sealed class TerminalFlow
     //
     // Both messages in this phase are READ-ONLY: they ask the host something and move
     // no money. That is the only reason a null answer can be handled by simply telling
-    // the customer and returning the card. From Phase 2 a null answer to a withdrawal
+    // the customer and returning the card. From stage 2 a null answer to a withdrawal
     // means the opposite - the host may have debited the account already - and the
     // right response there is a reversal, not a message.
     private Envelope? SendAndRead<TBody>(string type, TBody body) where TBody : notnull
@@ -952,7 +952,7 @@ public sealed class TerminalFlow
     /// ASSUMPTION: the remaining balance is not printed. A real receipt usually carries
     /// it, and the host does send it back on the dispense advice - but printing it would
     /// mean printing a balance read at a moment that is not the moment the paper says.
-    /// Recorded in reports/assumptions.md rather than guessed at.
+    /// Recorded in the assumptions list rather than guessed at.
     /// </remarks>
     private IReadOnlyList<string> Receipt(WithdrawalHandle handle, WithdrawalResult result) =>
     [

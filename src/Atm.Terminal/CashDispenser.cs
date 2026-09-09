@@ -55,7 +55,7 @@ public interface ICashDispenser
 /// <remarks>
 /// The bucket names are the ones the domain model section 1 fixes, and the list is closed:
 /// a note that is not in one of these is a note this project cannot account for. The
-/// money-conservation checker of Phase 2f reads exactly these numbers.
+/// money-conservation checker of stage 2f reads exactly these numbers.
 /// </remarks>
 /// <param name="InCassettes">Still in the drawers.</param>
 /// <param name="AtTheMouth">Handed out, not yet taken - the Transit bucket.</param>
@@ -107,7 +107,7 @@ public sealed record CashPosition(
 /// </summary>
 /// <remarks>
 /// This is not a test helper living in production code by accident. Fault injection is
-/// what this project is FOR (rule 3), and Phase 4 drives these same
+/// what this project is FOR (rule 3), and stage 4 drives these same
 /// settings from scenarios/*.json rather than from C#.
 /// </remarks>
 public sealed record DispenserFault

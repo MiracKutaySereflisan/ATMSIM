@@ -2,7 +2,7 @@
 # Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 # run-scenarios.sh - Runs every fault scenario in scenarios/ and prints what happened.
 #
-# What this is: the deliverable of Phase 4. Each file in scenarios/ describes one way for
+# What this is: the deliverable of stage 4. Each file in scenarios/ describes one way for
 # something to go wrong, in data rather than in code (rule 5), together with
 # what SHOULD happen - written before the run, never adjusted to it.
 #

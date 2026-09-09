@@ -10,7 +10,7 @@
 //
 // Two of these tests are about money not moving rather than about money moving, and
 // they are the ones worth reading twice: an unanswered balance enquiry is safe to
-// shrug at, and Phase 2 will have to stop shrugging.
+// shrug at, and stage 2 will have to stop shrugging.
 
 using Atm.Protocol;
 using Atm.Terminal;
@@ -111,7 +111,7 @@ public class TerminalFlowTests
     [Fact]
     public void ThePinDigitsNeverAppearInAnythingSentToTheScreen()
     {
-        // This is the test the Phase 1g note in ScreenContractTests promised: it walks
+        // This is the test the stage 1g note in ScreenContractTests promised: it walks
         // the real PIN-entry path and scans every picture the flow produced, including
         // the ones on the error paths.
         var pictures = new List<ScreenView>();
@@ -216,7 +216,7 @@ public class TerminalFlowTests
         // A balance enquiry reads. Nothing was done, so nothing needs undoing, and the
         // honest thing to tell the customer is that it could not be completed.
         //
-        // Phase 2 breaks this. An unanswered WITHDRAWAL cannot be treated this way:
+        // stage 2 breaks this. An unanswered WITHDRAWAL cannot be treated this way:
         // the host may have debited the account already and the terminal does not
         // know. The answer there is a reversal (rule 4.1). This test
         // exists partly to mark the place where that difference begins.

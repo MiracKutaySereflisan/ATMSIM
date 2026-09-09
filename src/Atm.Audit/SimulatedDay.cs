@@ -7,7 +7,7 @@
 //
 // Why this belongs here and not in the tests: it did live in a test file, and that was the
 // wrong home for it. The same harness is needed by three callers - the end-to-end tests,
-// scripts/check.sh, and the scenario runner of Phase 4 - and a copy per caller is three
+// scripts/check.sh, and the scenario runner of stage 4 - and a copy per caller is three
 // slightly different ATMs that drift apart. It sits in Atm.Audit because everything here
 // is about looking at the system from outside it.
 //

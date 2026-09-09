@@ -14,7 +14,7 @@
 // a message that changed after being sent would be untraceable.
 //
 // What is implemented here is what the host actually answers today: echo, PIN
-// verification, balance enquiry and - since Phase 2b - withdrawal authorisation.
+// verification, balance enquiry and - since stage 2b - withdrawal authorisation.
 // Dispense advice, reversal and the deposit messages are written in the protocol spec
 // and arrive with the phases that perform them. Writing them now would be writing code
 // for behaviour that does not exist yet.
@@ -189,7 +189,7 @@ public sealed record EchoBody;
 /// <remarks>
 /// Careful: <see cref="Pin"/> must never reach a journal, a log line or an error
 /// message. See KARAR-010. Encryption is deliberately out of scope and declared as a
-/// known gap in reports/assumptions.md.
+/// known gap in the assumptions list.
 /// </remarks>
 public sealed record PinVerifyRequestBody(string Pan, string Pin);
 
@@ -203,7 +203,7 @@ public sealed record BalanceRequestBody(string Pan);
 /// Balance enquiry result. Amounts are in kurus as whole numbers - see KARAR-008.
 /// </summary>
 /// <remarks>
-/// Available and Ledger are equal in Phase 1 and stop being equal in Phase 2, when an
+/// Available and Ledger are equal in stage 1 and stop being equal in stage 2, when an
 /// authorised withdrawal holds part of the balance before the ledger has moved.
 /// </remarks>
 public sealed record BalanceResponseBody(string Rc, long Available, long Ledger);

@@ -285,7 +285,7 @@ public class TerminalDepositTests
     // With the demo host there is no way to reach that answer FROM THE SCREEN - the only
     // refusal it produces is an unknown card, and an unknown card never gets past the PIN
     // to the menu. The path itself is covered at flow level in DepositTests.cs; driving it
-    // through the screen needs fault injection, which arrives in Phase 4. Recorded here
+    // through the screen needs fault injection, which arrives in stage 4. Recorded here
     // rather than faked with a weakened test (rule 9).
 
     [Fact]

@@ -61,7 +61,7 @@ public class WithdrawalEndToEndTests
             var goneFromTheAccount = StartingLedger - LedgerOf(Card);
             Assert.Equal(goneFromTheAccount, position.WithCustomers);
 
-            // The same claim again, this time through the runnable layer (Phase 2g). Both
+            // The same claim again, this time through the runnable layer (stage 2g). Both
             // are kept on purpose: the two lines above are written out by hand and cannot
             // be wrong in the same way the checker can, so a checker that starts passing
             // everything is caught here rather than agreeing with itself.

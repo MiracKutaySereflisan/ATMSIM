@@ -1,23 +1,22 @@
 #!/usr/bin/env python3
 # Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
-# ekran-provasi.py - Uçtan uca prova: iki süreci başlatır, tarayıcının yerine geçer,
-# ve demo arıza anahtarlarının uçtan uca çalıştığını gösterir.
+# ekran-kontrol.py - Uçtan uca kontrol: iki süreci başlatır, tarayıcının yerine geçer,
+# ve arıza anahtarlarının uçtan uca çalıştığını doğrular.
 #
-# Neden var: demo yolunun provası da yapılmalı ve bu prova bitmiş sayılma koşullarından
-# biridir. Elle yapılan bir prova, bir sonraki
-# değişiklikten sonra tekrarlanmaz; koşulabilir bir prova tekrarlanır.
+# Neden var: elle yapılan bir kontrol, bir sonraki değişiklikten sonra tekrarlanmaz;
+# koşulabilir bir kontrol tekrarlanır.
 #
 # Ne kapsıyor: gerçek host süreci, gerçek terminal süreci, gerçek TCP soketi, gerçek
 # WebSocket el sıkışması ve çerçevelemesi, gerçek ekran sözleşmesi, servis paneli.
 # Yani tarayıcı dışındaki her şey. Tarayıcının kendi çizimi (animasyonlar, tam ekran)
-# bir insanın bakmasını gerektiriyor ve elle denetlenir.
+# bir insanın bakmasını gerektirir.
 #
 # Neden Python: tek dosya, ek bağımlılık istemiyor. python3 kurulu olmayan bir makinede
-# çalışmaz - o yüzden bu prova bir kapı değil, bir araçtır;
+# çalışmaz - o yüzden bu kontrol bir kapı değil, bir araçtır;
 # aynı yolun testlerle kapsanan kısmı ScreenServerTests içindedir ve ./scripts/test.sh
 # ile her zaman koşar.
 #
-# Kullanım: python3 scripts/ekran-provasi.py
+# Kullanım: python3 scripts/ekran-kontrol.py
 #   Host 9501, ekran 8501 portlarını kullanır. Bitince iki süreci de kapatır.
 
 import base64, json, os, socket, struct, subprocess, sys, time, hashlib
@@ -92,7 +91,7 @@ try:
     assert "sıkışık" in g.get("demo",""), g
     g = step("demo", "makine-duzelsin", "DEMO: makine düzelsin")
     assert g.get("demo","") == "", g
-    print("PROVA TAMAM")
+    print("KONTROL TAMAM")
 finally:
     term.terminate(); host.terminate()
     time.sleep(0.5)

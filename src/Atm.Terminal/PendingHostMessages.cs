@@ -25,7 +25,7 @@
 // What is NOT here, and is a deliberate limit: a background timer. The queue is drained
 // on the next transaction, not on a clock of its own, so a machine that is switched on
 // and left alone will not send its queued message until somebody uses it. A real ATM
-// pumps its queue in the background; this one does not, and reports/assumptions.md says
+// pumps its queue in the background; this one does not, and the assumptions list says
 // so rather than letting the omission look like an oversight.
 
 using Atm.Protocol;
@@ -68,7 +68,7 @@ public interface IPendingHostMessages
 }
 
 /// <summary>
-/// The queue kept in memory. The disk arrives with the persistence step of Phase 2
+/// The queue kept in memory. The disk arrives with the persistence step of stage 2
 /// (KARAR-013); nothing above this class has to change when it does.
 /// </summary>
 public sealed class PendingHostMessages : IPendingHostMessages

@@ -11,7 +11,7 @@
 // really its own reading being late. That failure mode is the one that turns an
 // invariant layer into a source of noise, and noise is how a real finding gets ignored.
 //
-// The second reason is Phase 4. A scenario run has to be reproducible from a seed
+// The second reason is stage 4. A scenario run has to be reproducible from a seed
 // (rule 5), and a checker that reads live objects can only run while the
 // system is up. A snapshot can be written to a file, kept, and checked again later - by
 // the scenario runner, by the end-of-day script, and by a human who wants to see why.

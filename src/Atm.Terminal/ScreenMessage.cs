@@ -25,7 +25,7 @@
 // The browser is told "draw three asterisks"; it never keeps the digits and never
 // decides how many to draw. Every asterisk on the screen came from the terminal.
 //
-// Simplification, recorded in reports/assumptions.md: on a real ATM the PIN is typed
+// Simplification, recorded in the assumptions list: on a real ATM the PIN is typed
 // into a sealed keypad (an encrypting PIN pad) that releases only an encrypted block,
 // and the digits never travel as digits. Here they travel as key events on a loopback
 // connection. Encryption is out of scope for the whole project - KARAR-010.
@@ -105,7 +105,7 @@ public sealed record ScreenView
     /// </summary>
     /// <remarks>
     /// Carried on EVERY picture rather than on the one that switched it, because a machine
-    /// with a fault silently on is a machine somebody will one day show to an audience as
+    /// with a fault silently on is a machine somebody will one day show to a user as
     /// if it were working normally (KARAR-053). The browser only displays this; it is not
     /// the browser's memory of what it pressed.
     /// </remarks>

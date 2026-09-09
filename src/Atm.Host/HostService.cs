@@ -6,7 +6,7 @@
 //
 // Why no socket: a flow that reads from a network cannot be tested without a network,
 // and a test that needs a network is a test that fails for reasons that have nothing
-// to do with the money (rule 6a). Phase 1e puts a TCP listener in front
+// to do with the money (rule 6a). stage 1e puts a TCP listener in front
 // of this class; the listener's only job will be to carry bytes in and out. Every
 // decision that matters happens here, where it can be run a thousand times in a
 // millisecond.
@@ -21,7 +21,7 @@
 // ANSWER IT GAVE BEFORE, without doing the work again. Instruction section 4.5 says
 // this goes into the model at the start rather than being added later, and it is here
 // on the day the host first answers anything - even though nothing it answers today
-// moves money. Adding it in Phase 2, after the flows are written, would mean editing
+// moves money. Adding it in stage 2, after the flows are written, would mean editing
 // every one of them.
 //
 // Note what is stored: the previous ANSWER, not just "this was seen". Replying "you
@@ -526,7 +526,7 @@ public sealed class HostService
             // The cash already reached the customer and was posted. The host cannot
             // un-hand a banknote, so it does not pretend to: it acknowledges - otherwise
             // the terminal re-sends this for ever - and writes the contradiction down
-            // loudly. Phase 4 counts these; a silent acknowledgement here would be the
+            // loudly. stage 4 counts these; a silent acknowledgement here would be the
             // quiet repair rule 6b forbids.
             UnexpectedReversalCount++;
 

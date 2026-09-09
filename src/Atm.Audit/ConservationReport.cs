@@ -15,7 +15,7 @@
 // An unexplained difference is the finding this project exists to produce. Instruction
 // section 3 calls it a violation of money conservation; rule 6b requires it
 // to fail loudly rather than be quietly repaired. Hence ThrowIfViolated: the callers that
-// run unattended - the scenario runner in Phase 4, the end-of-day script - call it and
+// run unattended - the scenario runner in stage 4, the end-of-day script - call it and
 // stop. Callers that want to look at the whole picture read the lists instead.
 
 namespace Atm.Audit;

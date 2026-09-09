@@ -142,7 +142,7 @@ public class PinVerifierTests
         // The seed values in PinVerifier.WithDemoCards were produced once, outside the
         // source. This is the test that says they still belong to the PIN written in
         // the setup notes - if someone regenerates one and forgets the other, the demo
-        // would fail in front of an audience instead of here.
+        // would fail in front of a user instead of here.
         var verifier = PinVerifier.WithDemoCards();
 
         Assert.True(verifier.Check(Card, "1234").Ok, "TR-DEMO-001 kartı 1234 ile açılmalı.");

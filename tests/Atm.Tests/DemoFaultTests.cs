@@ -9,7 +9,7 @@
 // says only "the operator pressed this"; what it means is decided here (KARAR-053).
 //
 // The second is louder: every picture admits that a fault is on. A demonstration machine
-// with a fault quietly switched on is a machine somebody will one day show to an audience
+// with a fault quietly switched on is a machine somebody will one day show to a user
 // as if it were working normally - and that is a worse outcome than the demo failing,
 // because it is a claim about the system that nobody can see is false.
 

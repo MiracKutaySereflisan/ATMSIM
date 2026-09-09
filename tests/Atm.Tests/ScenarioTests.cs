@@ -4,7 +4,7 @@
 // What these tests are for: the scenario machinery itself - the reader that refuses what it
 // does not understand, and the runner that reports WHERE a difference was visible.
 //
-// Why the machinery needs its own tests: everything else in Phase 4 is measured BY it. A
+// Why the machinery needs its own tests: everything else in stage 4 is measured BY it. A
 // reader that silently skipped a misspelled field would report a fault that was never
 // injected as a scenario that passed; a runner whose detection point was always "nowhere"
 // would report a system that catches nothing as a system with nothing to catch. Both

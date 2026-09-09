@@ -24,7 +24,7 @@
 // a rule that depends on nobody forgetting is not a rule, so it is made unsayable.
 //
 // Behind the interface today: a list in memory. KARAR-013 requires the ledger and the
-// pending-reversal queue to reach disk, and that arrives in Phase 2 with the first
+// pending-reversal queue to reach disk, and that arrives in stage 2 with the first
 // movement that has money in it - a durable file with nothing to make durable would
 // be a file written for its own sake.
 
@@ -129,7 +129,7 @@ public interface IJournal
     IReadOnlyList<JournalEntry> Entries { get; }
 }
 
-/// <summary>The record kept in memory. Disk arrives in Phase 2 (KARAR-013).</summary>
+/// <summary>The record kept in memory. Disk arrives in stage 2 (KARAR-013).</summary>
 public sealed class InMemoryJournal : IJournal
 {
     private readonly List<JournalEntry> _entries = [];

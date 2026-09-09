@@ -4,7 +4,7 @@
 // What this file does: it keeps the accounts in a file, so that a host which is stopped
 // and started again does not hand every customer their morning balance back.
 //
-// Why this was left until now: until Phase 2 the accounts never changed, so losing them
+// Why this was left until now: until stage 2 the accounts never changed, so losing them
 // cost nothing. From the moment a withdrawal moves a ledger, a restart that resets the
 // balances is a machine that PRINTS MONEY - every restart returns whatever was spent. It
 // was written down as an open item rather than quietly tolerated, and this file closes it.
@@ -27,7 +27,7 @@
 // The store has to find an account by the card the customer inserted, and a masked number
 // cannot be looked up. In a real bank that lookup goes through an encrypted or tokenised
 // store; encryption is out of scope here and declared as a known gap
-// (reports/assumptions.md). The card numbers in this file are invented, Luhn-valid and
+// (the assumptions list). The card numbers in this file are invented, Luhn-valid and
 // correspond to nothing real - which is exactly why this simplification is affordable HERE
 // and would not be affordable anywhere else.
 

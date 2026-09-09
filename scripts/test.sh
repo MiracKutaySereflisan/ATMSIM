@@ -7,7 +7,7 @@
 #
 # Note: this does not call "dotnet test". The test project carries its own runner
 # (tests/Atm.Tests/TestKit/) because the build environment cannot reach the package
-# feed - see karar kaydı KARAR-006. From the outside the difference is invisible.
+# feed (KARAR-006). From the outside the difference is invisible.
 #
 # Usage: ./scripts/test.sh
 set -euo pipefail

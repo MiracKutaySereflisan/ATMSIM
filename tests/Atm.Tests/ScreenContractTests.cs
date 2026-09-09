@@ -85,9 +85,9 @@ public class ScreenContractTests
     //
     // This test builds the picture itself, so all it can show is that the codec does
     // not invent a field and leak something into it. It cannot show that the terminal's
-    // flow will not one day put a PIN into Title or Lines, because in Phase 1g there is
-    // no flow yet. The test that walks the real PIN-entry path belongs to Phase 1h and
-    // is written down as a known gap in reports/assumptions.md. Until then this is a guard on the codec,
+    // flow will not one day put a PIN into Title or Lines, because in stage 1g there is
+    // no flow yet. The test that walks the real PIN-entry path belongs to stage 1h and
+    // is written down as a known gap in the assumptions list. Until then this is a guard on the codec,
     // not on the terminal.
     [Fact]
     public void ThePinNeverReachesTheScreen()

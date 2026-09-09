@@ -8,7 +8,7 @@
 #
 # Why it waits for the ports instead of sleeping for a couple of seconds: a fixed sleep is
 # right on the machine it was written on and wrong on a slower one, and it fails in front
-# of an audience. Asking whether the port answers is the same question, asked properly.
+# of a user. Asking whether the port answers is the same question, asked properly.
 #
 # Why it runs the built binaries directly instead of "dotnet run", and this is the fix for
 # a real bug that hit a live demo:

@@ -2,7 +2,7 @@
 // Program.cs (Atm.Audit)
 //
 // What this file does: it plays one whole day through the simulator and prints whether
-// the money adds up. This is Phase 2g's deliverable - the central claim of the project
+// the money adds up. This is stage 2g's deliverable - the central claim of the project
 // turned from a sentence into a command anybody can run.
 //
 // Why a fixed day rather than a random one: rule 5 makes determinism
@@ -16,7 +16,7 @@
 // exotic and every one of them happens to real machines every day. If the books only
 // balance when nothing goes wrong, they do not balance.
 //
-// What this program is NOT: the scenario runner. That arrives in Phase 4 and reads its
+// What this program is NOT: the scenario runner. That arrives in stage 4 and reads its
 // failures from scenarios/*.json instead of from the switch below (rule 5:
 // failure scenarios live in data, not in code). This file is its first, small form, and
 // it exists now because the checker it drives had to be provable before the scenarios
@@ -26,8 +26,8 @@ using Atm.Audit;
 using Atm.Protocol;
 using Atm.Terminal;
 
-// Two deliverables, one binary. "senaryolar" runs the scenario files of Phase 4;
-// anything else runs the fixed conservation day of Phase 2g. They share the simulator,
+// Two deliverables, one binary. "senaryolar" runs the scenario files of stage 4;
+// anything else runs the fixed conservation day of stage 2g. They share the simulator,
 // the checker and the day harness, and a second executable would have shared all three
 // and differed only in its Main - which is not a layer that solves a problem
 // (rule 6a). The two scripts in scripts/ are what a person sees.

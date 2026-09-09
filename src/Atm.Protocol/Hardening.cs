@@ -18,7 +18,7 @@
 //
 // Every flag maps to one numbered fact in the project instruction, and the mapping is the
 // point - it is what makes "we turned off rule 4.3" a sentence about ATMs rather than a
-// sentence about our code. reports/naive-mode.md carries the same table in Turkish, with
+// sentence about our code. The same comparison is printed by the scenario runner, with
 // what each one costs when it is off.
 //
 // What this file does NOT do: make the naive mode reachable in the demo. It is a

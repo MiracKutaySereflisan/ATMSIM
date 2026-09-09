@@ -23,7 +23,7 @@
 // stores a verification value derived with keys that live inside a tamper-resistant
 // box called an HSM. A salted hash is the same IDEA - keep something you can check
 // against but cannot reverse - and it is not the same MECHANISM. Encryption and key
-// management are declared out of scope in reports/assumptions.md (V-02) rather than
+// management are declared out of scope in the assumptions list (V-02) rather than
 // half-implemented, because a half-implemented one would look like the real thing.
 //
 // Try counting lives here rather than in the account, because it is not a property of

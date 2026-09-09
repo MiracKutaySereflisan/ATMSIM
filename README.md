@@ -91,8 +91,6 @@ uydurulmuş bir biçimdir.
 Bilinen sınır: bekleyen mesaj kuyruğu arka planda bir zamanlayıcıyla değil, bir sonraki
 işlem sırasında boşalır. Gerçek bir ATM kuyruğunu arka planda sürer; bu yapmıyor.
 
-Bunlar eksik değil, sınırdır: sınırı yazılı olmayan bir çalışmanın ölçüsü de yoktur.
-
 ## Lisans
 
 MIT — `LICENSE` dosyasına bak.

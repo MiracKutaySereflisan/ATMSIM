@@ -41,7 +41,7 @@ using var client = new TerminalClient(() => link.Connect(), clock);
 // in. A real ATM in this position shows "temporarily out of service" and keeps trying;
 // it does not fall over.
 //
-// Found by rehearsing the demo: with no host listening, this line threw and the
+// Found by running the demo by hand: with no host listening, this line threw and the
 // terminal died with a stack trace where a sentence belonged.
 try
 {
@@ -75,8 +75,8 @@ var demo = new DemoFaults();
 // and the machine cannot tell it apart from the first.
 //
 // A cut line answers immediately rather than after the full timeout. A dead socket answers
-// immediately in life too, and thirty seconds of nothing in front of an audience teaches
-// nobody anything. Written down in reports/assumptions.md.
+// immediately in life too, and thirty seconds of nothing in front of a user teaches
+// nobody anything. Written down in the assumptions list.
 Envelope? Ask(Envelope request, TimeSpan timeout)
 {
     if (demo.LineIsDown)
@@ -168,7 +168,7 @@ using var screen = new ScreenServer(
             // is a bug and should be loud. Out here it must not be fatal: this process is
             // the running ATM, and a stray or mistyped message from a browser tab is an
             // operating condition, not a reason for the machine to die in front of an
-            // audience. It is reported at full volume and the machine stays up, showing
+            // user. It is reported at full volume and the machine stays up, showing
             // whatever it was showing.
             Console.Error.WriteLine($"  EKRAN HATASI -> {happened.Event}:{happened.Value} - {ex.Message}");
             return null;

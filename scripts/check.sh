@@ -2,7 +2,7 @@
 # Copyright (c) 2026 Mirac Kutay Sereflisan. MIT lisansi - LICENSE dosyasina bakiniz.
 # check.sh - Runs one day through the simulator and reports whether the money adds up.
 #
-# This is the money-conservation checker of Phase 2g in its one-command form. It plays a
+# This is the money-conservation checker of stage 2g in its one-command form. It plays a
 # fixed, seeded day - twelve withdrawals with dispenser faults and lost answers scattered
 # through them - and then compares the machine's cash, the host's ledger, the host's
 # record and the terminal's record against each other.

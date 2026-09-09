@@ -15,7 +15,7 @@
 // seconds and the flow believes it. Same input, same result, every run.
 //
 // Why VirtualClock sits here in production code rather than in the test project:
-// the scenario runner of Phase 4 will run the REAL transaction flow on the virtual
+// the scenario runner of stage 4 will run the REAL transaction flow on the virtual
 // clock - that is how "cut the line at second 12" becomes reproducible. It is not a
 // test double; it is the clock the simulator runs on. See KARAR-016.
 

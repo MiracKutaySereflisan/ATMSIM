@@ -21,7 +21,7 @@
 // One test plants a difference by hand (ADifferenceRefusesTheCloseAndSaysHowBig). That is
 // deliberate and it is the only honest way to test a detector: a detector that has never
 // been shown a difference is a detector nobody has tested. The planted line has the exact
-// shape of failure A-01 in reports/failure-catalog.md - cash the machine handed over that
+// shape of failure A-01 in the failure catalogue - cash the machine handed over that
 // the host never debited, with an empty queue behind it.
 
 using Atm.Audit;

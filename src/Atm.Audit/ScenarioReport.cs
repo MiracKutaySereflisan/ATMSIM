@@ -2,7 +2,7 @@
 // ScenarioReport.cs
 //
 // What this file does: it runs every scenario file and prints what happened - one line per
-// scenario, then the coverage matrix, then the summary the report and the presentation are
+// scenario, then the coverage matrix, then the summary the report is
 // built on.
 //
 // Why the summary has three numbers rather than one: "how many passed" is the least
@@ -92,7 +92,7 @@ public static class ScenarioReport
     }
 
     /// <summary>
-    /// The comparison the report and the presentation are built on.
+    /// The comparison the report is built on.
     /// </summary>
     /// <remarks>
     /// Four rows, and the last one is the one to read out loud. A difference caught at the

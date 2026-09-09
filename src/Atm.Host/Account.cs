@@ -6,7 +6,7 @@
 //
 // Why two balances and not one: the ledger balance is what the account's history adds
 // up to. The available balance is that minus the money already promised to a
-// withdrawal that has been authorised but not yet closed. Since Phase 2b they stop
+// withdrawal that has been authorised but not yet closed. Since stage 2b they stop
 // being equal the moment an authorisation is approved: the hold rises, the ledger does
 // not move, and the ledger only moves when the machine reports what it actually handed
 // over (KARAR-029). A system with a single number cannot say "promised but not yet

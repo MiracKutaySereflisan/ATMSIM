@@ -17,7 +17,7 @@
 //
 // What is NOT tested here, because it does not exist yet: what happens after the cash
 // is handed over. The dispense advice, the reversal and the ledger movement they cause
-// arrive in Phase 2c. Until then an approved authorisation leaves a hold standing, and
+// arrive in stage 2c. Until then an approved authorisation leaves a hold standing, and
 // that is the honest state of the system rather than an oversight.
 
 using Atm.Host;
